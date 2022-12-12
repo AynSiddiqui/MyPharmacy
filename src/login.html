@@ -10,9 +10,8 @@
   <link rel="stylesheet" href="./login.css">
 </head>
 
-<body class="d-flex flex-column vh-90">
-
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<body class="d-flex flex-column">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark ">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">MyPharmacy</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,34 +46,35 @@
         </form>
       </div>
     </div>
+
   </nav> 
 
   
-    <!-- partial:index.partial.html -->
-    <div id="login-form-wrap">
-      <h2>Login</h2>
-      <form class="mt-4" id="login-form">
-        <p>
-        <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
-        </p>
-        <p>
-        <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
-        <!-- </p>
-        <p>
-        <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
-        </p> -->
-        <p>
-        <input type="submit" id="login" value="Login">
-        </p>
-      </form>
-      <div id="create-account-wrap">
-        <p>Not a member? <a href="#">Create Account</a><p>
-      </div><!--create-account-wrap-->
-    </div><!--login-form-wrap-->
-    <!-- partial -->
+  <!-- partial:index.partial.html -->
+  <div id="login-form-wrap">
+    <h2>Login</h2>
+    <form class="mt-4" id="login-form">
+      <p>
+      <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+      </p>
+      <!-- <p>
+      <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+      </p> -->
+      <p>
+      <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+      </p>
+      <p>
+      <input type="submit" id="login" value="Login">
+      </p>
+    </form>
+    <div id="create-account-wrap">
+      <p>Not a member? <a href="#">Create Account</a><p>
+    </div><!--create-account-wrap-->
+  </div><!--login-form-wrap-->
+  <!-- partial -->
 
 
-  <footer class="footer bg-dark py-3 mt-auto">
+  <footer class="footer bg-dark py-3 mt-auto fixed-bottom">
     <div class="container">
       <span class="text-muted">&copy; MyPharmacy</span>
     </div>
