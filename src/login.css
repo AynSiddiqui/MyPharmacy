@@ -2,7 +2,7 @@ body {
     background-color: #9f9da7;
     /* background: url('./bg.jpg')no-repeat; */
     background-size: cover;
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
     font-family: "Open Sans", sans-serif;
     color: #2b3e51;
   }
@@ -36,6 +36,14 @@ body {
     transition: all 0.2s ease;
   }
   
+  .flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+
   #login-form-wrap {
     background-color: #fff;
     width: 21.5%;
@@ -135,8 +143,22 @@ body {
     right: 15px;
     top: 0px;
   }
-  
-  input[type="submit"] {
+
+
+  /* button[type="submit"]{
+  border: none;
+  color: grey;
+  border: grey;
+  }
+
+  button[type="submit"] :hover {
+    background-color: blue;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    color: blue;
+  } */
+
+  input[type="submit"]{
     border: none;
     border-radius: 60px;
     display: block;
@@ -153,11 +175,15 @@ body {
     cursor: pointer;
     text-align: center;
   }
+
+
+
   input[type="submit"]:hover {
     background-color: #329dd5;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
   }
+  
   
   #create-account-wrap {
     background-color: #eeedf1;
@@ -168,4 +194,33 @@ body {
     border-radius: 0 0 40px 40px;
   }
 
+  /* .navbar-custom {
+    height: 50px;
+  } */
+
+  .navbar {
+    min-height: 30px;
+  }
   
+  .navbar-brand {
+    padding: 0 15px;
+    height: 80px;
+    line-height: 80px;
+  }
+  
+  /* .navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    /* margin-top: 23px;  */
+    /* padding: 9px 10px !important;
+  } */
+  
+  @media (min-width: 768px) {
+    .navbar-nav > li > a {
+      /* (80px - line-height of 27px) / 2 = 26.5px */
+      padding-top: 26.5px;
+      padding-bottom: 26.5px;
+      line-height: 27px;
+    }
+  }
+
+
