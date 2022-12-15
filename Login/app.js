@@ -21,6 +21,8 @@ db.once("open", () => {
 });
 
 const app = express();
+
+
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
@@ -71,17 +73,23 @@ app.post('/login', (req, res) => {
     res.send(req.body)
 })
 
+app.get('/register', (req, res) => {
+    res.render('users/register');
+})
+
+app.post('/register', (req, res) => {
+    // req.flash('success', 'welcome back!');
+    // const redirectUrl = req.session.returnTo || '/campgrounds';
+    // delete req.session.returnTo;
+    // res.redirect(redirectUrl);
+    res.send(req.body)
+})
+
 app.get('/logout', (req, res) => {
     req.logout();
     req.flash('success', "Goodbye!");
     res.redirect('/campgrounds');
 })
-
-
-
-
-
-
 
 app.all('*', (req, res, next) => {
     res.send("Page not found");

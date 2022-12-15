@@ -1,13 +1,6 @@
-<% layout('layouts/bootstrap')%>
-<head>
-  <meta charset="UTF-8">
-  <title>Login Page</title>
-
-  <link rel="stylesheet" href="./users/login.css">
-</head>
-
-<body>
+<% layout('layouts/boilerplate')%>
 <!-- partial:index.partial.html -->
+<link rel="stylesheet" href="./users/login.css">
 <div id="login-form-wrap">
   <h2>Login</h2>
   <form action="/login" method="POST" class="mt-4" id="login-form">
@@ -25,9 +18,7 @@
     </p>
   </form>
   <div id="create-account-wrap">
-    <p>Not a member? <a href="#">Create Account</a><p>
+    <p>Not a member? <a href="http://localhost:3000/register">Create Account</a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->
 <!-- partial -->
-</body>
-</html>
