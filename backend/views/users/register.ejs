@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%>
+<!-- partial:index.partial.html -->
+<link rel="stylesheet" href="./users/register.css">
+<div id="create-form-wrap">
+    <h2>Create Account</h2>
+    <form class="mt-4" id="login-form">
+        <p>
+        <input type="text" id="fullname" name="fullname" placeholder="Fullname" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="submit" id="create" value="Create Account">
+        </p>
+    </form>
+    <div id="login-account-wrap">
+        <p>Already have an account? <a href="http://localhost:3000/login">Login</a><p>
+    </div><!--login-account-wrap-->
+    </div><!--create-form-wrap-->
+    <!-- partial -->
