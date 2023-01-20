@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const path = require('path');
 
 const app = express();
 
@@ -41,6 +42,7 @@ db.once("open", () => {
 // EJS
 
 app.use(expressLayouts); //order imp
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 
 // Express body parser
