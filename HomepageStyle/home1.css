@@ -86,6 +86,14 @@ body{
 .portfolio .card {
 	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
 }
+
+.services .card {
+    background-color: rgba(59, 17, 71, 0.91)!important;
+}
+/* .services .bg-primary {
+    background-color: rgba(59, 17, 71, 0.91)!important;
+} */
+
 .team .card {
 	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
 }
@@ -95,6 +103,8 @@ body{
 .team .card-body i {
 	font-size: 20px;
 }
+
+
 
 /* ****responsive css**** */
 
