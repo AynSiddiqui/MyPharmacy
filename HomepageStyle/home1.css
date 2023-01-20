@@ -79,6 +79,13 @@ body{
     z-index: 1;
   }
 
+
+
+.search-container{
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
 .w-100{
     height: 100vh;
 }
@@ -126,6 +133,12 @@ body{
         width: 100%;
     }
 }
+
+/* INCASE WE WANT LESSER PADDING
+.section-padding{
+    padding-top: 4em;
+    padding-bottom: 4em;
+} */
 
 @media only screen and(max-width:767px){
     .navbar-nav{
