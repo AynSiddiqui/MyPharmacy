@@ -139,6 +139,7 @@ z-index: 1;
     text-align: center;
     padding: 20px 0 0 0;
     border-radius: 40px;
+    border-bottom-left-radius:0;border-bottom-right-radius: 0;
     box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -264,7 +265,7 @@ z-index: 1;
     font-size: 14px;
     width: 100%;
     padding: 10px 0;
-    border-radius: 0 0 40px 40px;
+    border-radius: 0 0 30px 30px;
 }
 
 
