@@ -1,0 +1,24 @@
+/* b-card:hover {
+    border: 1px solid #3E7DC0 !important;
+ }
+*/
+
+.label:active {
+    outline-color: skyblue !important;
+  }
+.btn:active {
+    outline-color: skyblue !important;
+  }
+.input:active {
+    outline-color: skyblue !important;
+  }
+
+  body {
+    background-color: #CDE6F5;
+    /* background: url('./bg.jpg')no-repeat; */
+    background-size: cover;
+    /* font-size: 1.6rem; */
+    font-family: "Open Sans", sans-serif;
+    color: #2b3e51;
+  }
+
