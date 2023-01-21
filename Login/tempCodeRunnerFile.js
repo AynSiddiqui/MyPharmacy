@@ -1,1 +1,1 @@
-home
+app.use(expressLayouts);

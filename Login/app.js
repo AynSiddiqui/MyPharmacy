@@ -10,6 +10,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const catchAsync = require('../utils/catchAsync');
 const User = require('./models/user');
+const expressLayouts = require('express-ejs-layouts');
+// require('./config/passport')(passport);
 
 mongoose.set("strictQuery", true);
 mongoose.connect('mongodb://127.0.0.1:27017/mypharmacy', {
@@ -25,11 +27,11 @@ db.once("open", () => {
 
 const app = express();
 
-
+// app.use(expressLayouts);
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); //to get data from form with req.body
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -50,10 +52,10 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     console.log(req.session)
@@ -99,11 +101,11 @@ app.post('/register', catchAsync(async (req, res, next) => {
     }
 }));
 
-app.get('/logout', (req, res) => {
-    req.logout();
-    req.flash('success', "Goodbye!");
-    // res.redirect('/campgrounds');
-})
+// app.get('/logout', (req, res) => {
+//     req.logout();
+//     req.flash('success', "Goodbye!");
+//     // res.redirect('/campgrounds');
+// })
 
 app.all('*', (req, res, next) => {
     res.send("Page not found");
