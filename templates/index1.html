@@ -5,9 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2nd page</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style1.css') }}">
 </head>
-<body>
-  <h1>Medicine Found</h1>
+<body class="bg-nav">
+  <h1>Medicine For you</h1>
+  <table border="5">
+  <tr>
+  <th>Medicine Name</th>
+  </tr>
+  {% for i in range(0,len) %}
+    <tr>
+      <td>{{ k[i] }}</td>
+  {% endfor %}
+    </tr>
+     
+  </table>
   <a href="/">
     <input type="submit" class="btn btn-primary btn-block btn-lg" value="Back to home">
     </a>

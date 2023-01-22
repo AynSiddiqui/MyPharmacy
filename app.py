@@ -14,9 +14,16 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route('/searchmed')
+@app.route('/search',methods=['GET','POST'])
 def search():
-    return render_template("index1.html")
+    data=request.form.get("data")
+    k=searching(data)
+    return render_template("index1.html",len=len(k), k=k)
+    #return k
+
+@app.route('/details')
+def display():
+    return "Nothing"
 
 if __name__=="__main__":
     app.run(debug=True)

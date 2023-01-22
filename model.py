@@ -88,3 +88,5 @@ classifier = RandomForestClassifier()
 
 # Make pickle file of our model
 pickle.dump(classifier, open("modelnew.pkl", "wb"))
+
+print(searching("pain"))
