@@ -3,9 +3,7 @@
 <div id="carouselExampleCaptions" class="carousel-slide bg-white">
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <div id="login-form-wrap">
-      <h2>Login</h2>
-      
+      <div style="padding-top: 4em; height: 6px;">
       <% if(locals.errors){ %> <% errors.forEach(function(error) { %>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <%= error.msg %>
@@ -34,7 +32,14 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <% } %>
+        <% } %> 
+
+
+      </div>
+    <div id="login-form-wrap">
+      <h2>Login</h2>
+      
+      
 
         <form action="/users/login" method="POST" class="mt-4" id="login-form">
 				  <div class="form-group">
