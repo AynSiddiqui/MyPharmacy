@@ -9,13 +9,21 @@
 </head>
 <body class="bg-nav">
   <h1>Medicine For you</h1>
-  <table border="5">
+  <table border="5" cellpadding="20">
   <tr>
+  <th>Serial No.</th>
+  <th>Drug Id</th>
   <th>Medicine Name</th>
+  <th>Medical Condition</th>
+  <th>Reviews (out of 5)</th>
   </tr>
   {% for i in range(0,len) %}
     <tr>
-      <td>{{ k[i] }}</td>
+      <td>{{ i+1 }}</td>
+      <td>{{ id[i] }}</td>
+      <td>{{ med[i] }}</td>
+      <td>{{ condition[i] }}</td>
+      <td>{{ rating[i] }}</td>
   {% endfor %}
     </tr>
      

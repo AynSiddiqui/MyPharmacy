@@ -39,15 +39,19 @@ def searching(srch):
     #srch=input("Enter medicine name or condition : ")
 
     #Finding close match
-    match=difflib.get_close_matches(srch,med_name,5,0.75)
+    match=difflib.get_close_matches(srch,med_name,5,0.9)
     if len(match)==0:
         match=difflib.get_close_matches(srch,cond_name)
+        rating_med=[]
+        med_med=[]
         for i in range(0,len(match)):
             #index_med=list(drug_name[drug_name.Condition==match[i]]['index'])
-            global rating_med
-            global med_med
-            rating_med=list(drug_name[drug_name.Condition==match[i]]['Ratings'])
-            med_med=list(drug_name[drug_name.Condition==match[i]]['Drug'])
+            rating=list(drug_name[drug_name.Condition==match[i]]['Ratings'])
+            med=list(drug_name[drug_name.Condition==match[i]]['Drug'])
+            for j in range(0,len(rating)):
+                if med[j] not in med_med:
+                    rating_med.append(rating[j])
+                    med_med.append(med[j])
         arrange=merge(rating_med,med_med)
         sorted_med=sorted(arrange,key=lambda x:x[0], reverse=True)
         #print("Medicines suggested for you: ")
@@ -66,7 +70,34 @@ def searching(srch):
             #print((i+1),". ",match[i])
         return match
 
-#print(searching("pain"))
+def drugid(k):
+    id=[]
+    for i in range(0,len(k)):
+        id_med=list(drug_name[drug_name.Drug==k[i]]['DrugId'])
+        id.append(id_med[0])
+    return id
+
+def drugrating(k):
+    rating=[]
+    for i in range(0,len(k)):
+        rating_med=list(drug_name[drug_name.Drug==k[i]]['Ratings'])
+        rating.append(rating_med[0])
+    return rating
+
+def drugcondition(k):
+    condition=[]
+    for i in range(0,len(k)):
+        condition_med=list(drug_name[drug_name.Drug==k[i]]['Condition'])
+        condition.append(condition_med[0])
+    return condition
+
+
+k=searching("fever")
+print(k)
+print(drugid(k))
+print(drugcondition(k))
+print(drugrating(k))
+
 
 # Select independent and dependent variable
 X = drug_name[["Drug", "Condition"]]
@@ -89,4 +120,4 @@ classifier = RandomForestClassifier()
 # Make pickle file of our model
 pickle.dump(classifier, open("modelnew.pkl", "wb"))
 
-print(searching("pain"))
+
