@@ -92,7 +92,7 @@ def drugcondition(k):
     return condition
 
 
-k=searching("fever")
+k=searching("throat infection")
 print(k)
 print(drugid(k))
 print(drugcondition(k))
