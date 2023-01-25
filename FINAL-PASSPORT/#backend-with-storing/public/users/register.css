@@ -47,7 +47,7 @@ body{
 abc */
 
 .carousel-slide{
-    background-color: rgb(151, 188, 196)!important;
+    /* background-color: rgb(151, 188, 196)!important; */
 }
 
 .navbar-nav a{

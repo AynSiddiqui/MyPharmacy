@@ -46,9 +46,10 @@ body{
 }
 abc */
 
-.carousel-slide{
+/* .carousel-slide{
     background-color: rgb(151, 188, 196)!important;
-}
+    background-image:url('./img/team-1.png')!important;
+} */
 
 
 .navbar-nav a{
