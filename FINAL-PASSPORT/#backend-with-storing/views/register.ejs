@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="register.css">
+<link rel="stylesheet" href="./users/register.css">
 <!-- <link rel="stylesheet" href="../public/users/register.css"> -->
 
 
 <div id="carouselExampleCaptions" class="carousel-slide bg-white">
-	<div class="carousel-inner">
+	<div class="carousel-inner pb-4">
 	  <div class="carousel-item active">		
 <div style="padding-top: 4em; height: 8px;"> 
   <% if(locals.errors){ %><% errors.forEach(function(error) { %>
@@ -41,7 +41,7 @@
       
       
 
-        <form action="/users/register" method="POST" class="mt-4" id="login-form">
+        <form action="/register" method="POST" class="mt-4" id="login-form">
           <div class="form-group">
           <p>
           <input 

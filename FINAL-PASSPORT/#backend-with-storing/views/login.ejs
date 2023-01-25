@@ -1,9 +1,28 @@
-<link rel="stylesheet" href="login.css">
-<!-- <link rel="stylesheet" href="../public/users/login.css"> -->
-<div id="carouselExampleCaptions" class="carousel-slide bg-white">
+<link rel="stylesheet" href="./users/login.css">
+<style>
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  zoom: 120%;
+  opacity: 30%;
+}
+* {
+    font-weight: bold;
+}
+</style>
+<video loop autoplay muted>
+          <source src="./img/video.mp4" type="video/mp4">
+        </video>
+<!-- <link rel="stylesheet" href="../public/login.css"> -->
+<div id="carouselExampleCaptions" class="carousel-slide bg-white" style="z-index: 0;">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <div style="padding-top: 4em; height: 2px;">
+        <div></div>
       <% if(locals.errors){ %> <% errors.forEach(function(error) { %>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <%= error.msg %>
@@ -41,7 +60,7 @@
       
       
 
-        <form action="/users/login" method="POST" class="mt-4" id="login-form">
+        <form action="/login" method="POST" class="mt-4" id="login-form">
 				  <div class="form-group">
           <p>
 				  <input 
@@ -68,7 +87,7 @@
           </div>
 				</form>
 				<div id="create-account-wrap">
-				  <p>Not a member? <a href="/users/register">Create Account</a><p>
+				  <p>Not a member? <a href="/register">Create Account</a><p>
 				  <!-- <p>Not a member? <a href="http://localhost:3000/register">Create Account</a><p> -->
 				</div><!--create-account-wrap-->
 			  
