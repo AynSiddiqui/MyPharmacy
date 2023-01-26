@@ -60,7 +60,7 @@ def searching11(srch):
     i=1
     list_med=[]
     for med in sorted_med:
-        if i<11:
+        if i<21:
             list_med.append(med[1])
             i+=1
     return list_med
@@ -88,7 +88,7 @@ def searching(srch):
         i=1
         list_med=[]
         for med in sorted_med:
-            if i<11:
+            if i<21:
                 #print(i,". ",med[1])
                 list_med.append(med[1])
                 i+=1
@@ -123,7 +123,7 @@ def drugcondition(k):
     return condition
 
 
-k=searching11("fever")
+k=searching11("high")
 print(k)
 print(drugid(k))
 print(drugcondition(k))

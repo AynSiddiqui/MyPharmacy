@@ -88,7 +88,7 @@ def searchingg(srch):
         i=1
         list_med=[]
         for med in sorted_med:
-            if i<11:
+            if i<21:
                 #print(i,". ",med[1])
                 list_med.append(med[1])
                 i+=1
