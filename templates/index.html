@@ -12,7 +12,12 @@
     <div class="container">
     <form action={{ url_for('search') }} method="post" class="form">
       <input type="text" class="form-control" placeholder="Search by condition or medicine" required="required" name="data"><br>
-       <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search">
+       <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search">      
+    </form>
+    <br><br><br><br>
+    <form action={{ url_for('searchgen') }} method="post" class="formg">  
+      <input type="text" class="form-control" placeholder="Search for generic" required="required" name="datag"><br>
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search Generic">
     </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

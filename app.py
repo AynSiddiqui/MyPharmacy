@@ -3,12 +3,12 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 #from ipynb.fs.full.Search_algorithm import searching
 from model import searching11, drugid, drugcondition, drugrating
+from modelg import searching11g, drugidg, drugconditiong, drugratingg
 
 # Create flask app
 app = Flask(__name__)
 #model = pickle.load(open("modelnew.pkl", "rb"))
 
-print(searching11("cancer"))
 
 @app.route('/')
 def home():
@@ -24,9 +24,15 @@ def search():
     return render_template("index1.html",len=len(med), id=id, med=med, condition=condition, rating=rating)
     #return k
 
-@app.route('/details')
-def display():
-    return "Nothing"
+@app.route('/searchgen',methods=['GET','POST'])
+def searchgen():
+    data=request.form.get("datag")
+    med=searching11g(data)
+    id=drugidg(med)
+    condition=drugconditiong(med)
+    rating=drugratingg(med)
+    return render_template("index2.html",len=len(med), id=id, med=med, condition=condition, rating=rating)
+    #return k
 
 if __name__=="__main__":
     app.run(debug=True)

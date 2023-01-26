@@ -33,12 +33,12 @@ cond_name=drug_name['Condition'].tolist()
 #List with ratings
 rate_value=drug_name['Ratings'].tolist()
 
-def merge(list1, list2):
+def mergeg(list1, list2):
      
     merged_list = tuple(zip(list1, list2))
     return merged_list
 
-def searching11(srch):
+def searching11g(srch):
     #srch=input("Enter medicine name or condition : ")
     match=[]
     rating_med=[]
@@ -55,7 +55,7 @@ def searching11(srch):
                 rating_med.append(rate_value[i])
 
     rating=list(np.around(rating_med, decimals=2))
-    arrange=merge(rating,match)
+    arrange=mergeg(rating,match)
     sorted_med=sorted(arrange,key=lambda x:x[0], reverse=True)
     i=1
     list_med=[]
@@ -65,7 +65,7 @@ def searching11(srch):
             i+=1
     return list_med
     
-def searching(srch):
+def searchingg(srch):
     #srch=input("Enter medicine name or condition : ")
 
     #Finding close match
@@ -82,7 +82,7 @@ def searching(srch):
                 if med[j] not in med_med:
                     rating_med.append(rating[j])
                     med_med.append(med[j])
-        arrange=merge(rating_med,med_med)
+        arrange=mergeg(rating_med,med_med)
         sorted_med=sorted(arrange,key=lambda x:x[0], reverse=True)
         #print("Medicines suggested for you: ")
         i=1
@@ -100,14 +100,14 @@ def searching(srch):
             #print((i+1),". ",match[i])
         return match
 
-def drugid(k):
+def drugidg(k):
     id=[]
     for i in range(0,len(k)):
         id_med=list(drug_name[drug_name.Drug==k[i]]['DrugId'])
         id.append(id_med[0])
     return id
 
-def drugrating(k):
+def drugratingg(k):
     rating=[]
     for i in range(0,len(k)):
         rating_med=list(drug_name[drug_name.Drug==k[i]]['Ratings'])
@@ -115,7 +115,7 @@ def drugrating(k):
     rating_rounded=list(np.around(rating, decimals=2))
     return rating_rounded
 
-def drugcondition(k):
+def drugconditiong(k):
     condition=[]
     for i in range(0,len(k)):
         condition_med=list(drug_name[drug_name.Drug==k[i]]['Condition'])
@@ -123,11 +123,11 @@ def drugcondition(k):
     return condition
 
 
-k=searching11("fever")
+k=searching11g("fever")
 print(k)
-print(drugid(k))
-print(drugcondition(k))
-print(drugrating(k))
+print(drugidg(k))
+print(drugconditiong(k))
+print(drugratingg(k))
 
 
 # Select independent and dependent variable
