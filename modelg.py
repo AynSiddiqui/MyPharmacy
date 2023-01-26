@@ -18,7 +18,7 @@ import pickle
 #from sklearn.ensemble import RandomForestClassifier
 #from sklearn.model_selection import train_test_split
 
-drug_name=pd.read_excel ("output.xlsx")
+drug_name=pd.read_excel ("outputg.xlsx")
 #print(drug_name.tail())
 #print(drug_name.head())
 
@@ -123,7 +123,7 @@ def drugconditiong(k):
     return condition
 
 
-k=searching11g("fever")
+k=searching11g("nervous")
 print(k)
 print(drugidg(k))
 print(drugconditiong(k))
