@@ -10,11 +10,11 @@ app = Flask(__name__)
 #model = pickle.load(open("modelnew.pkl", "rb"))
 
 
-@app.route('/search')
+@app.route('/search1')
 def home():
     return render_template("index.html")
 
-@app.route('/searchbrand',methods=['GET','POST'])
+@app.route('/search2',methods=['GET','POST'])
 def search():
     data=request.form.get("data")
     med=searching11(data)
@@ -24,7 +24,7 @@ def search():
     return render_template("index1.html",len=len(med), id=id, med=med, condition=condition, rating=rating)
     #return k
 
-@app.route('/searchgen',methods=['GET','POST'])
+@app.route('/search3',methods=['GET','POST'])
 def searchgen():
     data=request.form.get("datag")
     med=searching11g(data)
