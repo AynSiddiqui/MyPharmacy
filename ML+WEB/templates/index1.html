@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2nd page</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+<body class="bg-nav">
+  {% if len==0 %}
+    <h1>Sorry. No Medicines found !</h1>
+  {% else %}
+    <h1 align="center">Medicine For you</h1>
+    <table border="5" cellpadding="20">
+    <tr>
+    <th>Serial No.</th>
+    <th>Drug Id</th>
+    <th>Medicine Name</th>
+    <th>Medical Condition</th>
+    <th>Reviews (out of 5)</th>
+    </tr>
+    {% for i in range(0,len) %}
+      <tr>
+        <td>{{ i+1 }}</td>
+        <td>{{ id[i] }}</td>
+        <td>{{ med[i] }}</td>
+        <td>{{ condition[i] }}</td>
+        <td>{{ rating[i] }}</td>
+    {% endfor %}
+      </tr>
+    </table>
+    {% endif %}
+  <a href="/">
+    <input type="submit" class="btn btn-primary btn-block btn-lg" value="Back to home">
+  </a>
+</body>
+</html>

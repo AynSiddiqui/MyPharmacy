@@ -2,23 +2,24 @@
 
 import numpy as np
 import pandas as pd
-# import math
-# import re
-# from scipy.sparse import csr_matrix
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# from surprise import Reader, Dataset, SVD
+#import math
+#import re
+#from scipy.sparse import csr_matrix
+#import matplotlib.pyplot as plt
+#import seaborn as sns
+#from surprise import Reader, Dataset, SVD
 import difflib
-# from sklearn.feature_extraction.text import TfidfVectorizer #to convert textual data into vectors
-# from sklearn.metrics.pairwise import cosine_similarity
-# from surprise.model_selection.validation import cross_validate
-# sns.set_style("darkgrid")
-# import pickle
-# from sklearn.preprocessing import StandardScaler
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.model_selection import train_test_split
+#from sklearn.feature_extraction.text import TfidfVectorizer #to convert textual data into vectors
+#from sklearn.metrics.pairwise import cosine_similarity
+#from surprise.model_selection.validation import cross_validate
+#sns.set_style("darkgrid")
+import pickle
+#from sklearn.preprocessing import StandardScaler
+#from sklearn.ensemble import RandomForestClassifier
+#from sklearn.model_selection import train_test_split
 
 drug_name=pd.read_excel ("output.xlsx")
+#print(drug_name.tail())
 #print(drug_name.head())
 
 selected_features=['Condition','Drug']
@@ -29,12 +30,41 @@ for feature in selected_features:
 med_name=drug_name['Drug'].tolist()
 #List with conditions
 cond_name=drug_name['Condition'].tolist()
+#List with ratings
+rate_value=drug_name['Ratings'].tolist()
 
 def merge(list1, list2):
      
     merged_list = tuple(zip(list1, list2))
     return merged_list
 
+def searching11(srch):
+    #srch=input("Enter medicine name or condition : ")
+    match=[]
+    rating_med=[]
+    f=0
+    for i in range(0,len(med_name)):
+        if srch.lower() in med_name[i].lower(): # or difflib.SequenceMatcher(None,srch,med_name[i].ratio()>0.6):
+            match.append(med_name[i])
+            rating_med.append(rate_value[i])
+
+    for i in range(0,len(cond_name)):
+        if srch.lower() in cond_name[i].lower():
+            if med_name[i] not in match:
+                match.append(med_name[i])
+                rating_med.append(rate_value[i])
+
+    rating=list(np.around(rating_med, decimals=2))
+    arrange=merge(rating,match)
+    sorted_med=sorted(arrange,key=lambda x:x[0], reverse=True)
+    i=1
+    list_med=[]
+    for med in sorted_med:
+        if i<11:
+            list_med.append(med[1])
+            i+=1
+    return list_med
+    
 def searching(srch):
     #srch=input("Enter medicine name or condition : ")
 
@@ -82,7 +112,8 @@ def drugrating(k):
     for i in range(0,len(k)):
         rating_med=list(drug_name[drug_name.Drug==k[i]]['Ratings'])
         rating.append(rating_med[0])
-    return rating
+    rating_rounded=list(np.around(rating, decimals=2))
+    return rating_rounded
 
 def drugcondition(k):
     condition=[]
@@ -92,7 +123,7 @@ def drugcondition(k):
     return condition
 
 
-k=searching("throat infection")
+k=searching11("fever")
 print(k)
 print(drugid(k))
 print(drugcondition(k))
@@ -104,7 +135,7 @@ X = drug_name[["Drug", "Condition"]]
 y = drug_name["Drug"]
 
 # Split the dataset into train and test
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=50)
+#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=50)
 
 # # Feature scaling
 # sc = StandardScaler()
@@ -112,12 +143,12 @@ y = drug_name["Drug"]
 # X_test= sc.transform(X_test)
 
 # Instantiate the model
-# classifier = RandomForestClassifier()
+#classifier = RandomForestClassifier()
 
 # Fit the model
 # classifier.fit(X_train, y_train)
 
 # Make pickle file of our model
-# pickle.dump(classifier, open("modelnew.pkl", "wb"))
+#pickle.dump(classifier, open("modelnew.pkl", "wb"))
 
 
