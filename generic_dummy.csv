@@ -1,0 +1,34 @@
+﻿Index,Drugname,DrugId,Conditon,Rating,NoOfReviews
+1,Paracetamol,,Fever,3.9,4
+2,Abacavir,,AIDS/HIV,3.5,3
+3,Abciximab,,angioplasty,3.4,21
+4,Acetaminophen and Codeine,,"fever,headache,cough",4.2,53
+5,Baclofen,,Drowsiness,3,149
+6,Benazepril,,hypertension,3.5,78
+7,Benzoyl Peroxide,,acne,3.8,571
+8,Isotretinoin systemic,,acne,4,1002
+9,salicylic acid,,acne,3.5,30
+10, isotretinoin,,acne,4.1,116
+11,aspirin,,fever,5,11
+12,naproxen,,fever,4,20
+13,Cetafen,,fever,4.5,101
+14,ketoprofen,,hypertension,3.2,157
+15,Benidipine,,"high blood pressure,chest pain.",,
+16,aspirin / butalbital / caffeine,,headache,4.4,22
+17,acetaminophen / butalbital,,headache,4.65,18
+18,ubrogepant,,migrane,2.7,180
+19,rizatriptan,,migrane,4.15,314
+20,Guaifenesin,,chest congestion,3.9,39
+21,Pseudoephedrine,,"cold,hay fever",4,212
+22,triprolidine,,common cold,3.9,11
+23,Benadryl,,common cold,4.75,2
+24,Vicks VapoRub,,common cold,4,732
+25,modafinil,,Fatigue,3.65,61
+26,methylphenidate,,Fatigue,3.55,11
+27,amphetamine / dextroamphetamine,,Fatigue,4,47
+28,amantadine,,Fatigue,2.9,5
+29,dextroamphetamine,,Fatigue,3.4,13
+30,,,,,
+31,,,,,
+32,,,,,
+33,,,,,
