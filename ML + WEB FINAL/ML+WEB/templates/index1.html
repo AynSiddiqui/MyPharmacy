@@ -8,8 +8,28 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style1.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/rating.css') }}">
-
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>    
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100vh !important;
+  z-index: -1;
+  zoom: 120%;
+  opacity: 50%;
+  /* transform: rotate(180deg); */
+  object-fit: cover;
+}
+</style>
+
+<video loop autoplay muted>
+  <source src="{{ url_for('static', filename='video1.mp4') }}" type="video/mp4">
+</video>
 <body class="bg-nav">
 
 <!-- navbar -->
@@ -60,82 +80,50 @@
   <div id="carouselExampleCaptions" class="carousel-slide" background="./img/team-1.png" ba style="z-index: 0;">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <div style="padding-top: 4em; height: 2px;">    
+        <div style="padding-top: 3em;height: 2px;">    
         </div>
-      <div id="login-form-wrap"> 
-        <div class="container" >            
+      <div id="login-form-wrap" style="transform: translateX(20px);">          
         {% if len==0 %}
     <h1>Sorry. No Medicines found !</h1>
   {% else %}
-    <h1 align="center">MEDICINES FOR YOU</h1>
-    <table border="5" cellpadding="20" class="table1">
-    <tr>
-    <th>Serial No.</th>
-    <th>Drug Id</th>
-    <th>Medicine Name</th>
-    <th>Medical Condition</th>
-    <th>Reviews (out of 5)</th>
-    </tr>
+  <div><h1 align="left" style="margin-left: 280px;"><a href="/" align="left" style="margin-bottom: -66px;color: blue;"><i  class="bi bi-arrow-left"></i></a>&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<span>MEDICINES FOR YOU</span></h1>
     {% for i in range(0,len) %}
-      <tr>
-        <td>{{ i+1 }}</td>
-        <td>{{ id[i] }}</td>
-        <td>{{ med[i] }}</td>
-        <td>{{ condition[i] }}</td>
-        <td>{{ rating[i] }}</td>
+    <div data-aos="fade-up"data-aos-duration="1000">
+      <div class="container1" style=" color: white ;margin-bottom: 20px ;padding-top: 60px;width: 1030px;margin-left: 100px;transform: scale(1.2);z-index: 1;">
+        <div class="photo-card" style="height: 186.812px;width: 762px;/*margin: 34px;*/margin-top: 62;/*transform: scale(1.15);*/position: static;margin-right: 13px;margin-bottom: 44px;padding: 0;padding-left: 0px;margin-left: 233px;background: rgb(15,6,69);height: 3;border-radius: 1em;">
+            <div class="photo-details" style="width: 730px;height: 159.8px;transform: scale(1);border-radius: 0px;">
+                <h1 style="height: 0;transform: translateX(-350px) translateY(10px);font-size: 15px;"><span>{{ i+1 }}</span></h1>
+                <div class="pt-3 p-lg-4 " style="transform: translateX(20px) translateY(5px);">
+                  <h4 style="height: 17.5px;margin-top: -10px;font-size: 19.5px;margin-bottom: 30.825px;margin-left: -2px;transform: translateX(-299px) translateY(0px);">Medicine :&nbsp;</h4>
+                <p style="margin-top: -16px;font-size: 16px;height: 80px;margin-left: 20px;transform: translateX(-288px) translateY(0px);">Medical Condition :&nbsp;</p>
+                <br>
+                <div style="margin-top: -106px; scale: 0.37;margin-left: -20px;">
+                  <div style="font-size: 38.5px;padding-top: -80px; padding-bottom: 20px; margin-left: -553px ;height: 10px;justify-content: left;text-align: left;">Rating</div>
+                  <br>
+                  <h4 style="height: 17.5px;margin-top: -13px ;font-size: 38.5px;margin-bottom: 33.825px;margin-left: 20px;transform: translateX(-600px) translateY(-20px);">
+                      &nbsp;<div class="rating" style="margin-left: 300px;" >{{ rating[i] }}</div></h4>
+                 </div><h5 style="font-size: 19.5px;transform: translateX(90px) translateY(-127px);color: rgb(255, 255, 255);text-align: left;">{{ med[i] }}</h5> <h5 style="font-size: 24.5px;font-size: 16px;transform: translateX(132px) translateY(-125px);color: rgb(255, 255, 255);text-align: left;z-index: 2;">{{ condition[i] }}</h5>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+        
     {% endfor %}
-      </tr>
-    </table>
-    {% endif %}
-  <a href="/">
-    <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search for another medicine">
-  </a> 
-</div>                  
+    {% endif %}</div>
+    
+  <!-- <a href="/">
+    <input type="submit" class="btn btn-primary" value="Search for another medicine">
+  </a>                    -->
       </div><!--login-form-wrap-->
       </div>
     </div>
   </div>
   <!-- body ends -->
-  <div class="container1" style=" color: white ;padding-bottom: 40px;padding-top: 69px;width: 1030px;margin-left: 100px;transform: scale(1.5);">
-    <div class="photo-card" style="height: 186.812px;width: 762px;/*margin: 34px;*/margin-top: 62;/*transform: scale(1.15);*/position: static;margin-right: 13px;margin-bottom: 44px;padding: 0;padding-left: 0px;margin-left: 233px;background: rgb(15,6,69);height: 3;border-radius: 1em;">
-        <div class="photo-details" style="width: 730px;height: 159.8px;transform: scale(1);border-radius: 0px;">
-            <h1 style="height: 0;transform: translateX(20px) translateY(10px);font-size: 15px;">1</h1>
-            <div class="pt-3 p-lg-4 " style="transform: translateX(20px) translateY(5px);">
-              <h4 style="height: 17.5px;margin-top: -13px;font-size: 24.5px;margin-bottom: 33.825px;margin-left: 20px;transform: translateX(-13px) translateY(0px);">Medicine :&nbsp;</h4>
-            <p style="margin-top: -16px;height: 80px;margin-left: 20px;transform: translateX(-13px) translateY(0px);">Medical Condition : </p>
-            <br>
-            <div style="margin-top: -100px; scale: 0.37;">
-              <br>
-              <h4 style="height: 17.5px;margin-top: -13px ;font-size: 38.5px;margin-bottom: 33.825px;margin-left: 20px;transform: translateX(-610px) translateY(-20px);">
-                  &nbsp&nbsp Rating &nbsp;<ul></ul><div class="rating" >4.8</div></h4>
-             </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-<div class="container1" style=" color: white ;padding-bottom: 40px;padding-top: 69px;width: 1030px;margin-left: 100px;transform: scale(1.5);">
-  <div class="photo-card" style="height: 186.812px;width: 762px;/*margin: 34px;*/margin-top: 62;/*transform: scale(1.15);*/position: static;margin-right: 13px;margin-bottom: 44px;padding: 0;padding-left: 0px;margin-left: 233px;background: rgb(15,6,69);height: 3;border-radius: 1em;">
-      <div class="photo-details" style="width: 730px;height: 159.8px;transform: scale(1);border-radius: 0px;">
-          <h1 style="height: 0;transform: translateX(20px) translateY(10px);font-size: 15px;">1</h1>
-          <div class="pt-3 p-lg-4 " style="transform: translateX(20px) translateY(5px);">
-            <h4 style="height: 17.5px;margin-top: -13px;font-size: 24.5px;margin-bottom: 33.825px;margin-left: 20px;transform: translateX(-13px) translateY(0px);">Medicine :&nbsp;</h4>
-          <p style="margin-top: -16px;height: 80px;margin-left: 20px;transform: translateX(-13px) translateY(0px);">Medical Condition : </p>
-          <br>
-          <div style="margin-top: -100px; scale: 0.37;">
-            <br>
-            <h4 style="height: 17.5px;margin-top: -13px ;font-size: 38.5px;margin-bottom: 33.825px;margin-left: 20px;transform: translateX(-610px) translateY(-20px);">
-                &nbsp&nbsp Rating &nbsp;<ul></ul><div class="rating" >4.8</div></h4>
-           </div>
-          </div>
-          
-      </div>
-  </div>
-</div>
-
   
   <!-- footer -->
-  <footer style="z-index: 1;" class="bg-dark p-2 text-center text-white">
+  <footer style="z-index: 1; margin-top: 2em;" class="bg-dark p-2 text-center text-white">
   <div class="container pt-3" style="z-index: 2;">
     <div class="row">
     
@@ -167,6 +155,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+  document.querySelector('video').playbackRate=1.5;
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="../static/rdisp.js"></script>
 </body>
