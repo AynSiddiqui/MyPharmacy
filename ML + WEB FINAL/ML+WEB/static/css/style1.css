@@ -1,6 +1,6 @@
 .bg-nav{
     /* background: #1D976C;   */
-    background-image: url("car3.jpg");
+    /* background-image: url("car3.jpg"); */
     /* background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  
     background: linear-gradient(to right, #93F9B9, #1D976C);  */
 
@@ -17,6 +17,7 @@ body{
 .section-padding{
     padding: 100px 0;
 }
+
 
 /* .container{
     align-self: center;
