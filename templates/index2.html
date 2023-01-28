@@ -12,12 +12,13 @@
     <h1>Sorry. No Medicines found !</h1>
   {% else %}
     <h1 align="center">Medicine For you</h1>
-    <table border="5" cellpadding="20">
+    <table border="5" cellpadding="10">
     <tr>
     <th>Serial No.</th>
     <th>Generic Medicine Name</th>
     <th>Medical Condition</th>
     <th>Reviews (out of 5)</th>
+    <th>Cost</th>
     <th>Side Effects</th>
     </tr>
     {% for i in range(0,len) %}
@@ -26,6 +27,7 @@
         <td>{{ med[i] }}</td>
         <td>{{ condition[i] }}</td>
         <td>{{ rating[i] }}</td>
+        <td>{{ cost[i] }}</td>
         <td>{{ side[i] }}</td>
     {% endfor %}
       </tr>

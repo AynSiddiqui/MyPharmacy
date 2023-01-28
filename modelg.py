@@ -29,7 +29,10 @@ for feature in selected_features:
 drug_name['Rating'] = drug_name['Rating'].astype('float')
 #print(drug_name.dtypes)
 drug_name['Side_effects']=drug_name['Side_effects'].replace(r'([a-z])([A-Z])', r'\1,\2', regex=True)
-drug_name['Side_effects']=drug_name['Side_effects'].str.replace(")", "), ")
+#drug_name['Side_effects'] = drug_name['Side_effects'].astype('str')
+drug_name['Side_effects']=drug_name['Side_effects'].str.replace(")","), ", regex=True)
+drug_name['Side_effects'] = drug_name['Side_effects'].str.rstrip(', ')
+
 #print(drug_name['Side_effects'])
 
 #List with medicine names
@@ -94,13 +97,19 @@ def drugconditiong(k):
         condition.append(condition_med[0])
     return condition
 
+def drugcostg(k):
+    cost=[]
+    for i in range(0,len(k)):
+        cost_med=list(drug_name[drug_name.Med_name==k[i]]['Cost'])
+        cost.append(cost_med[0])
+    return cost
 
-k=searching11g("pain")
+k=searching11g("diabetes")
 print(k)
 print(drugconditiong(k))
 print(drugratingg(k))
 print(sideeffectsg(k))
-
+print(drugcostg(k))
 
 # Select independent and dependent variable
 X = drug_name[["Med_name", "Condition"]]
