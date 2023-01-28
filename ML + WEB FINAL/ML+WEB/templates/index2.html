@@ -65,31 +65,33 @@
     <div id="login-form-wrap"> 
       <div class="container" >            
         {% if len==0 %}
-        <h1>Sorry. No Medicines found !</h1>
-      {% else %}
-        <h1 align="center">GENERIC MEDICINES FOR YOU</h1>
-        <table border="5" cellpadding="20" class="table1">
-        <tr>
-        <th>Serial No.</th>
-        <th>Generic Drug Id</th>
-        <th>Generic Medicine Name</th>
-        <th>Medical Condition</th>
-        <th>Reviews (out of 5)</th>
-        </tr>
-        {% for i in range(0,len) %}
-          <tr>
-            <td>{{ i+1 }}</td>
-            <td>{{ id[i] }}</td>
-            <td>{{ med[i] }}</td>
-            <td>{{ condition[i] }}</td>
-            <td>{{ rating[i] }}</td>
-        {% endfor %}
-          </tr>
-        </table>
-        {% endif %}
-      <a href="/">
-        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search for another medicine">
-      </a>
+    <h1>Sorry. No Medicines found !</h1>
+  {% else %}
+    <h1 align="center">Medicine For you</h1>
+    <table border="5" cellpadding="10">
+    <tr>
+    <th>Serial No.</th>
+    <th>Generic Medicine Name</th>
+    <th>Medical Condition</th>
+    <th>Reviews (out of 5)</th>
+    <th>Cost</th>
+    <th>Side Effects</th>
+    </tr>
+    {% for i in range(0,len) %}
+      <tr>
+        <td>{{ i+1 }}</td>
+        <td>{{ med[i] }}</td>
+        <td>{{ condition[i] }}</td>
+        <td>{{ rating[i] }}</td>
+        <td>{{ cost[i] }}</td>
+        <td>{{ side[i] }}</td>
+    {% endfor %}
+      </tr>
+    </table>
+    {% endif %}
+  <a href="/">
+    <input type="submit" class="btn btn-primary btn-block btn-lg" value="Back to home">
+  </a>
 </div>                  
     </div><!--login-form-wrap-->
     </div>

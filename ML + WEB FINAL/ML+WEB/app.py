@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 #from ipynb.fs.full.Search_algorithm import searching
 from model import searching11, drugid, drugcondition, drugrating
-from modelg import searching11g, drugidg, drugconditiong, drugratingg
+from modelg import searching11g, sideeffectsg, drugconditiong, drugratingg,drugcostg
 
 # Create flask app
 app = Flask(__name__)
@@ -28,13 +28,13 @@ def search():
 def searchgen():
     data=request.form.get("datag")
     med=searching11g(data)
-    id=drugidg(med)
     condition=drugconditiong(med)
     rating=drugratingg(med)
-    return render_template("index2.html",len=len(med), id=id, med=med, condition=condition, rating=rating)
+    cost=drugcostg(med)
+    side=sideeffectsg(med)
+    return render_template("index2.html",len=len(med), med=med, condition=condition, rating=rating, cost=cost, side=side)
     #return k
 
 if __name__=="__main__":
     # app.run(debug=True)
     app.run("localhost", "5001",debug=True)
-
