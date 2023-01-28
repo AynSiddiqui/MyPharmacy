@@ -18,20 +18,26 @@ import pickle
 #from sklearn.ensemble import RandomForestClassifier
 #from sklearn.model_selection import train_test_split
 
-drug_name=pd.read_excel ("outputg.xlsx")
+drug_name=pd.read_csv ("generic_csv.csv")
 #print(drug_name.tail())
 #print(drug_name.head())
 
-selected_features=['Condition','Drug']
+selected_features=['Condition','Med_name']
 for feature in selected_features:
     drug_name[feature]=drug_name[feature].fillna('')
 
+drug_name['Rating'] = drug_name['Rating'].astype('float')
+#print(drug_name.dtypes)
+drug_name['Side_effects']=drug_name['Side_effects'].replace(r'([a-z])([A-Z])', r'\1,\2', regex=True)
+drug_name['Side_effects']=drug_name['Side_effects'].str.replace(")", "), ")
+#print(drug_name['Side_effects'])
+
 #List with medicine names
-med_name=drug_name['Drug'].tolist()
+med_name=drug_name['Med_name'].tolist()
 #List with conditions
 cond_name=drug_name['Condition'].tolist()
 #List with ratings
-rate_value=drug_name['Ratings'].tolist()
+rate_value=drug_name['Rating'].tolist()
 
 def mergeg(list1, list2):
      
@@ -54,85 +60,51 @@ def searching11g(srch):
                 match.append(med_name[i])
                 rating_med.append(rate_value[i])
 
-    rating=list(np.around(rating_med, decimals=2))
-    arrange=mergeg(rating,match)
+    #rating=list(np.around(rating_med, decimals=2))
+    arrange=mergeg(rating_med,match)
     sorted_med=sorted(arrange,key=lambda x:x[0], reverse=True)
     i=1
     list_med=[]
     for med in sorted_med:
-        if i<11:
+        if i<21:
             list_med.append(med[1])
             i+=1
     return list_med
     
-def searchingg(srch):
-    #srch=input("Enter medicine name or condition : ")
 
-    #Finding close match
-    match=difflib.get_close_matches(srch,med_name,5,0.9)
-    if len(match)==0:
-        match=difflib.get_close_matches(srch,cond_name)
-        rating_med=[]
-        med_med=[]
-        for i in range(0,len(match)):
-            #index_med=list(drug_name[drug_name.Condition==match[i]]['index'])
-            rating=list(drug_name[drug_name.Condition==match[i]]['Ratings'])
-            med=list(drug_name[drug_name.Condition==match[i]]['Drug'])
-            for j in range(0,len(rating)):
-                if med[j] not in med_med:
-                    rating_med.append(rating[j])
-                    med_med.append(med[j])
-        arrange=mergeg(rating_med,med_med)
-        sorted_med=sorted(arrange,key=lambda x:x[0], reverse=True)
-        #print("Medicines suggested for you: ")
-        i=1
-        list_med=[]
-        for med in sorted_med:
-            if i<21:
-                #print(i,". ",med[1])
-                list_med.append(med[1])
-                i+=1
-        return list_med
-    else:
-        #print("Medicines suggested for you: ")
-        for i in range(0,len(match)): 
-            pass
-            #print((i+1),". ",match[i])
-        return match
-
-def drugidg(k):
-    id=[]
+def sideeffectsg(k):
+    side=[]
     for i in range(0,len(k)):
-        id_med=list(drug_name[drug_name.Drug==k[i]]['DrugId'])
-        id.append(id_med[0])
-    return id
+        side_med=list(drug_name[drug_name.Med_name==k[i]]['Side_effects'])
+        side.append(side_med[0])
+    return side
 
 def drugratingg(k):
     rating=[]
     for i in range(0,len(k)):
-        rating_med=list(drug_name[drug_name.Drug==k[i]]['Ratings'])
+        rating_med=list(drug_name[drug_name.Med_name==k[i]]['Rating'])
         rating.append(rating_med[0])
-    rating_rounded=list(np.around(rating, decimals=2))
-    return rating_rounded
+    #rating_rounded=list(np.around(rating, decimals=2))
+    return rating
 
 def drugconditiong(k):
     condition=[]
     for i in range(0,len(k)):
-        condition_med=list(drug_name[drug_name.Drug==k[i]]['Condition'])
+        condition_med=list(drug_name[drug_name.Med_name==k[i]]['Condition'])
         condition.append(condition_med[0])
     return condition
 
 
-k=searching11g("nervous")
+k=searching11g("pain")
 print(k)
-print(drugidg(k))
 print(drugconditiong(k))
 print(drugratingg(k))
+print(sideeffectsg(k))
 
 
 # Select independent and dependent variable
-X = drug_name[["Drug", "Condition"]]
-y = drug_name["Drug"]
+X = drug_name[["Med_name", "Condition"]]
+y = drug_name["Med_name"]
 
 # Split the dataset into train and test
 #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=50)

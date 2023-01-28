@@ -15,18 +15,18 @@
     <table border="5" cellpadding="20">
     <tr>
     <th>Serial No.</th>
-    <th>Generic Drug Id</th>
     <th>Generic Medicine Name</th>
     <th>Medical Condition</th>
     <th>Reviews (out of 5)</th>
+    <th>Side Effects</th>
     </tr>
     {% for i in range(0,len) %}
       <tr>
         <td>{{ i+1 }}</td>
-        <td>{{ id[i] }}</td>
         <td>{{ med[i] }}</td>
         <td>{{ condition[i] }}</td>
         <td>{{ rating[i] }}</td>
+        <td>{{ side[i] }}</td>
     {% endfor %}
       </tr>
     </table>
