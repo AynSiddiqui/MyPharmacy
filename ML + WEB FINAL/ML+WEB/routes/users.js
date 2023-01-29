@@ -7,7 +7,7 @@ const passport = require('passport');
 
 const User = require('../models/User');
 const { db } = require('../models/User');
-const { forwardAuthenticated } = require('../config/auth');
+const { forwardAuthenticated, notin } = require('../config/auth');
 
 // // Home Page
 
@@ -17,12 +17,12 @@ const { forwardAuthenticated } = require('../config/auth');
 // Login Page
 
 // router.get('/login',  (req, res) => res.render('login'));
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
+router.get('/login', notin, (req, res) => res.render('login'));
 
 // Register Page
 
 // router.get('/register', (req, res) => res.render('register'));
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
+router.get('/register', notin, (req, res) => res.render('register'));
 
 
 
@@ -112,7 +112,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/home',
+    successRedirect: '/',
     // successRedirect: '/dashboard',//trying home
     failureRedirect: '/login',
     failureFlash: true
@@ -126,7 +126,7 @@ router.get('/logout', (req, res) => {
     req.logout(function(err) {
     if (err) { return next(err); }
     req.flash('success_msg', 'You are logged out');
-    res.redirect('/home');
+    res.redirect('/');
     // res.redirect('/login'); //trying home
   });
 });
