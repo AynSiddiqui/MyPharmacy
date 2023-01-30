@@ -141,6 +141,7 @@ body{
     padding-bottom: 4em;
 } */
 
+
 @media only screen and(max-width:767px){
     .navbar-nav{
         text-align: center;
