@@ -25,15 +25,27 @@ def search():
     # return render_template("index1.html",len=len(med), id=id, med=med, condition=condition, rating=rating)
     #return k
 
-@app.route('/searchgen',methods=['GET','POST'])
+@app.route('/searchgen',methods=['POST']) 
 def searchgen():
-    data=request.form.get("datag")
-    med=searching11g(data)
+    responseObject=request.json
+    print(responseObject)
+    datag=responseObject['datag']
+    print(datag)
+    med=searching11g(datag)
     condition=drugconditiong(med)
     rating=drugratingg(med)
     cost=drugcostg(med)
     side=sideeffectsg(med)
-    return jsonify({"med": med, "id": id, "condition": condition, "rating": rating, "len": len(med)})
+    print(med,condition,rating,cost,side)
+    
+    def default(o):
+        if callable(o):
+            return o.__name__
+        raise TypeError("Not serializable")
+    
+    return json.dumps({"med": med, "id": id, "condition": condition, "rating": rating, "len": len(med)}, default=default)
+
+
     # return render_template("index2.html",len=len(med), med=med, condition=condition, rating=rating, cost=cost, side=side)
     #return k
 

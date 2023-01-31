@@ -45,7 +45,6 @@ app.use(expressLayouts); //order imp
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
-// app.use(express.static(path.join(__dirname, 'static')))
 // app.use(express.static(__dirname + '/public'));
 // app.use( express.static( "public" ) );
 
@@ -84,8 +83,8 @@ app.use(function (req, res, next) {
 
 // Routes
 
-// app.use('/', require('./routes/index.js'));
-// app.use('/', require('./routes/users.js'));
+app.use('/', require('./routes/index.js'));
+app.use('/', require('./routes/users.js'));
 app.get('/search', (req, res) => res.render("../templates/index"))
 app.post('/searchm', async (req, res) => {
   try {
@@ -98,7 +97,7 @@ app.post('/searchm', async (req, res) => {
     });
     // const response = await axios.post('http://localhost:5001/search', { data:req.body });
     const json = await response.json();
-
+    console.log(typeof(json))
     res.redirect(url.format({
       pathname: "/searchm",
       query:json
@@ -110,7 +109,56 @@ app.post('/searchm', async (req, res) => {
 app.get('/searchm', async (req, res) => {
   const { len, med, id, condition, rating } = req.query;
   res.render('../templates/index1',{
-    len,med, id, condition, rating })
+    len,med, id, condition, rating ,request:req})
+});
+// app.post('/searchgen', async (req, res) => {
+//   try {
+//     const response = await fetch('http://192.168.29.220:5001/searchgen', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(req.body)
+//     });
+//     console.log("",response.json())
+//     // const response = await axios.post('http://localhost:5001/search', { data:req.body });
+//     // const json = await response.json()[1];
+
+//     res.redirect(url.format({
+//       pathname: "/searchgen",
+//       query:json
+//     }));
+//   } catch (error) {
+//     console.error("hi",error);
+//   }
+// });
+app.post('/searchgen', async (req, res) => {
+  try {
+    const response = await fetch('http://192.168.29.220:5001/searchgen', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(req.body)
+    });
+    // const response = await axios.post('http://localhost:5001/search', { data:req.body });
+    var json =await response.text();
+    // json=JSON.stringify(json);
+    console.log(json)
+    // console.log(json)
+    res.redirect(url.format({
+      pathname: "/searchm",
+      query:json
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+});
+app.get('/searchgen', async (req, res) => {
+  console.log(req.query)
+  const { len, med, id, condition, rating,side } = req.query;
+  res.render('../templates/index2',{
+    len,med, id, condition, rating ,side,request:req})
 });
 
 const PORT = process.env.PORT || 5000;
