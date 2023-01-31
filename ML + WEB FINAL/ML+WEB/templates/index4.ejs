@@ -1,0 +1,33 @@
+  <title>Display store</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style4.css') }}">
+
+<body class="bg-nav">
+  {% if len==0 %}
+    <h1>Sorry. No Medicines found !</h1>
+  {% else %}
+    <h1 align="center">Medicine For you</h1>
+    <table border="5" cellpadding="20">
+    <tr>
+    <th>Serial No.</th>
+    <th>Store Name</th>
+    <th>Address</th>
+    <th>Pincode</th>
+    <th>Phone</th>
+    <th>Business Hours</th>
+    </tr>
+    {% for i in range(0,len) %}
+      <tr>
+        <td>{{ i+1 }}</td>
+        <td>{{ name[i] }}</td>
+        <td>{{ addr[i] }}</td>
+        <td>{{ pin[i] }}</td>
+        <td>{{ phone[i] }}</td>
+        <td>{{ hours[i] }}</td>
+    {% endfor %}
+      </tr>
+    </table>
+    {% endif %}
+  <a href="/searchstore">
+    <input type="submit" class="btn btn-primary btn-block btn-lg" value="Back to store search">
+  </a>
+</body>
