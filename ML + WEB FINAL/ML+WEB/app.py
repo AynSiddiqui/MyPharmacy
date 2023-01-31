@@ -5,24 +5,24 @@ import pickle
 from model import searching11, drugid, drugcondition, drugrating
 from modelg import searching11g, sideeffectsg, drugconditiong, drugratingg,drugcostg
 from model_store import storename, storeaddress, storepin, storephone, storehours
-
+import json
 # Create flask app
 app = Flask(__name__)
 #model = pickle.load(open("modelnew.pkl", "rb"))
 
 
-@app.route('/')
-def home():
-    return render_template("index.html")
-
-@app.route('/search',methods=['GET','POST'])
+@app.route('/search',methods=['POST'])
 def search():
-    data=request.form.get("data")
+    responseObject=request.json
+    print(responseObject)
+    data=responseObject['data']
+    print(data)
     med=searching11(data)
     id=drugid(med)
     condition=drugcondition(med)
     rating=drugrating(med)
-    return render_template("index1.html",len=len(med), id=id, med=med, condition=condition, rating=rating)
+    return json.dumps({"med": med, "id": id, "condition": condition, "rating": rating, "len": len(med)})
+    # return render_template("index1.html",len=len(med), id=id, med=med, condition=condition, rating=rating)
     #return k
 
 @app.route('/searchgen',methods=['GET','POST'])
@@ -33,7 +33,8 @@ def searchgen():
     rating=drugratingg(med)
     cost=drugcostg(med)
     side=sideeffectsg(med)
-    return render_template("index2.html",len=len(med), med=med, condition=condition, rating=rating, cost=cost, side=side)
+    return jsonify({"med": med, "id": id, "condition": condition, "rating": rating, "len": len(med)})
+    # return render_template("index2.html",len=len(med), med=med, condition=condition, rating=rating, cost=cost, side=side)
     #return k
 
 @app.route('/searchstore')
@@ -53,4 +54,4 @@ def displaystore():
 
 if __name__=="__main__":
     # app.run(debug=True)
-    app.run("localhost", "5001",debug=True)
+    app.run("0.0.0.0", "5001",debug=True)

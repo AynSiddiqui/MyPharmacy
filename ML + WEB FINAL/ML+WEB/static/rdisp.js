@@ -1,28 +1,17 @@
-const ratings = document.querySelectorAll(".rating");
-// Iterate over all rating items
-ratings.forEach((rating) => {
-  // Get content and get score as an int
-  const ratingContent = rating.innerHTML;
-  const ratingScore = parseInt(ratingContent*20, 10);
+// const ratings = document.querySelectorAll(".rating");
+// ratings.forEach((rating) => {
+//   const ratingContent = rating.innerHTML;
+//   const ratingScore = parseInt(ratingContent*20, 10);
+//   const scoreClass =
+//     ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
 
-  // Define if the score is good, meh or bad according to its value
-  const scoreClass =
-    ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
+//   rating.classList.add(scoreClass);
+//   const ratingColor = window.getComputedStyle(rating).backgroundColor;
 
-  // Add score class to the rating
-  rating.classList.add(scoreClass);
+//   const gradient = `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
 
-  // After adding the class, get its color
-  const ratingColor = window.getComputedStyle(rating).backgroundColor;
-
-  // Define the background gradient according to the score and color
-  const gradient = `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
-
-  // Set the gradient as the rating background
-  rating.setAttribute("style", gradient);
-
-  // Wrap the content in a tag to show it above the pseudo element that masks the bar
-  rating.innerHTML = `<span>${ratingScore}% ${
-    ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
-  }</span>`;
-});
+//   rating.setAttribute("style", gradient);
+//   rating.innerHTML = `<span>${ratingScore}% ${
+//     ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
+//   }</span>`;
+// });

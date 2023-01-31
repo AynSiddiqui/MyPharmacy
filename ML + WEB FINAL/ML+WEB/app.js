@@ -5,11 +5,11 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
-
+const axios = require('axios')
 const app = express();
-
+const url=require('url');
+var myScripts = require('./static/rdisp.js');
 // Passport Config
-
 require('./config/passport')(passport);
 
 // DB Config
@@ -28,14 +28,14 @@ require('./config/passport')(passport);
 
 mongoose.set("strictQuery", true);
 mongoose.connect('mongodb://127.0.0.1:27017/testsignup', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
-    console.log("Database connected");
+  console.log("Database connected");
 });
 
 
@@ -69,12 +69,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Connect flash middleware
-
 app.use(flash());
 
 // Global variables
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
@@ -84,23 +83,35 @@ app.use(function(req, res, next) {
 
 // Routes
 
-app.use('/', require('./routes/index.js'));
-app.use('/', require('./routes/users.js'));
+// app.use('/', require('./routes/index.js'));
+// app.use('/', require('./routes/users.js'));
+app.get('/search', (req, res) => res.render("../templates/index"))
+app.post('/searchm', async (req, res) => {
+  try {
+    const response = await fetch('http://192.168.29.220:5001/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(req.body)
+    });
+    // const response = await axios.post('http://localhost:5001/search', { data:req.body });
+    const json = await response.json();
+
+    res.redirect(url.format({
+      pathname: "/searchm",
+      query:json
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+});
+app.get('/searchm', async (req, res) => {
+  const { len, med, id, condition, rating } = req.query;
+  res.render('../templates/index1',{
+    len,med, id, condition, rating })
+});
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server running on port ${PORT}`));
-
-
-// <% if (!currentUser){ %> 
-//   <li class="nav-item">
-//           <a class="nav-link" href="/login">Login</a>
-//         </li>
-//   <li class="nav-item">
-//           <a class="nav-link" href="/register">Register</a>
-//         </li>
-//   <% } else { %> 
-//   <li class="nav-item">
-//           <a class="nav-link" href="/logout">Logout</a>
-//         </li>
-//   <% }  %> 
