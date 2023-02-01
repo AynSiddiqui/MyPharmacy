@@ -4,6 +4,29 @@
 
 body{
     background: #f1fbff;
+    color: #000040;
+    /* color: red; */
+}
+
+h2{
+    color: #000040;
+    /* color: red; */
+}
+.card-body h3{
+    /* color: #000040; */
+    color: #000040;
+    /* color: red; */
+}
+#card-body h3{
+    /* color: #000040; */
+    color:white !important;
+    /* color: red; */
+}
+
+.about-text {
+    /* font-weight: lighter; */
+    text-align: justify;
+    /* font-style: normal; */
 }
 
 .section-padding{
