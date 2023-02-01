@@ -108,10 +108,10 @@ app.post('/searchm', async (req, res) => {
   }
 });
 app.get('/searchm', async (req, res) => {
-  const { len, med, id, condition, rating } = req.query;
+  const { cost, len, med, id, condition, rating } = req.query;
   console.log(rating)
   res.render('../templates/index1', {
-    len, med, id, condition, rating, request: req
+    cost, len, med, id, condition, rating, request: req
   })
 });
 
@@ -139,10 +139,10 @@ app.post('/searchgen', async (req, res) => {
   }
 });
 app.get('/searchgen', async (req, res) => {
-  console.log(req.query)
-  const { len, med, id, condition, rating, side } = req.query;
+  // console.log(req.query)
+  const { cost, len, med, id, condition, rating, side } = req.query;
   res.render('../templates/index2', {
-    len, med, id, condition, rating, side, request: req
+    cost, len, med, id, condition, rating, side, request: req
   })
 });
 

@@ -43,7 +43,7 @@ def searchgen():
             return o.__name__
         raise TypeError("Not serializable")
     
-    return json.dumps({"med": med, "id": id, "condition": condition, "rating": rating, "len": len(med)}, default=default)
+    return json.dumps({"med": med, "id": id, "condition": condition, "rating": rating, "len": len(med),"cost":cost,"side":side}, default=default)
 
 
     # return render_template("index2.html",len=len(med), med=med, condition=condition, rating=rating, cost=cost, side=side)

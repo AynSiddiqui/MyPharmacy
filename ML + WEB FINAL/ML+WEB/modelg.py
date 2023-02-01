@@ -24,7 +24,7 @@ drug_name=pd.read_csv ("generic_csv.csv")
 
 selected_features=['Condition','Med_name','Cost']
 for feature in selected_features:
-    drug_name[feature]=drug_name[feature].fillna('')
+    drug_name[feature]=drug_name[feature].fillna('Currently N/A')
 
 selected_features1=['Rating']
 for feature in selected_features1:
