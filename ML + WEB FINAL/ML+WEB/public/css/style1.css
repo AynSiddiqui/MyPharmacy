@@ -25,7 +25,36 @@ body{
     align-items: center;
     
 } */
-
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100vh !important;
+    z-index: -1;
+    zoom: 120%;
+    opacity: 50%;
+    object-fit: cover;
+    src: "video1.mp4";
+  }
+  
+  .top {
+    position: -webkit-sticky;
+    bottom: 20px;     
+    place-self: end;
+    margin-top: 2000px;
+    
+    /* visual styling */
+    text-decoration: none;
+    padding: 10px;
+    padding-left: 400-x;
+    font-family: sans-serif;
+    color: #fff;
+    background: rgb(20, 6, 121);
+    border-radius: 100px;
+    white-space: nowrap;
+    margin-left: 89%;
+  }
 .carousel-item{
     /* height: 100vh; */
     min-height: 100vh;
