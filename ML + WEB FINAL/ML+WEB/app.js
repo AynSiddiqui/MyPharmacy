@@ -160,8 +160,7 @@ app.post('/searchstore', async (req, res) => {
     });
     const json = await response.json();
     if (json["len"] > 50) {
-      res.send("TOO MUCH")
-    }
+      res.render("../templates/search_error")    }
     else {
       res.redirect(url.format({
         pathname: "/searchstore",
@@ -175,15 +174,10 @@ app.post('/searchstore', async (req, res) => {
 
 app.get('/searchstore', async (req, res) => {
   // res.send("search store",req.query)ddd;
-  const {name,addr,pin,phone,hours}=req.query
-  res.render("../templates/index4",{name,addr,pin,phone,hours})
+  const {len,name,addr,pin,phone,hours}=req.query
+  res.render("../templates/index4",{len,name,addr,pin,phone,hours})
 })
 
-app.get('/search_error', async (req, res) => {
-  // res.send("search store",req.query)ddd;
-  // const {name,addr,pin,phone,hours}=req.query
-  res.render("../templates/search_error")
-})
 
 const PORT = process.env.PORT || 5000;
 

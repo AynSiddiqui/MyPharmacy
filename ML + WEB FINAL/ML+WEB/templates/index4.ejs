@@ -1,33 +1,90 @@
   <title>Display store</title>
+    <script src="vrem.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style4.css">
 
+
+  <video loop autoplay muted>
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+  
 <body class="bg-nav">
-  {% if len==0 %}
-    <h1>Sorry. No Medicines found !</h1>
-  {% else %}
-    <h1 align="center">Medicine For you</h1>
-    <table border="5" cellpadding="20">
-    <tr>
-    <th>Serial No.</th>
-    <th>Store Name</th>
-    <th>Address</th>
-    <th>Pincode</th>
-    <th>Phone</th>
-    <th>Business Hours</th>
-    </tr>
-    {% for i in range(0,len) %}
-      <tr>
-        <td>{{ i+1 }}</td>
-        <td>{{ name[i] }}</td>
-        <td>{{ addr[i] }}</td>
-        <td>{{ pin[i] }}</td>
-        <td>{{ phone[i] }}</td>
-        <td>{{ hours[i] }}</td>
-    {% endfor %}
-      </tr>
-    </table>
-    {% endif %}
-  <a href="/searchstore">
-    <input type="submit" class="btn btn-primary btn-block btn-lg" value="Back to store search">
-  </a>
+
+  <!-- body -->
+  <div id="carouselExampleCaptions" class="carousel-slide" ba style="z-index: 0;">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div style="padding-top: 5em;height: 2px;">    
+        </div>
+      <div id="login-form-wrap" style="transform: translateX(20px);">          
+        <% if (len == 0) { %>
+          </div>
+          <h1 align="center">SORRY, NO STORES FOUND!</h1>
+          <div class="d-flex justify-content-center">
+            <a class="btn mx-auto mt-auto" align="center" style="background-color:rgb(16, 8, 87)' ;" href="http://localhost:5000/searchs">GO BACK TO SEARCH PAGE</a>
+
+          </div>
+
+
+          <div style="padding-bottom: 273px;"><div>
+        <% } else { %>
+  
+  <div><h1 align="left" style="margin-left: 250px;"><a href="/" align="left" style="margin-bottom: -66px;color: blue;"><i  class="bi bi-arrow-left"></i></a>&emsp;&emsp;&emsp;&ensp;<span> MEDICAL SHOPS FOR YOU</span></h1>
+    
+    <% for (var i = 0; i < len; i++) { %>
+    <div data-aos="fade-up"data-aos-duration="1000">
+      <div class="container1" style=" color: white ;margin-bottom: 20px ;padding-top: 50px;width: 1030px;margin-left: 30px;transform: scale(1.2);z-index: 1;">
+        <div class="photo-card" style="height: 155px;width: 962px;/*margin: 34px;*/margin-top: 62;/*transform: scale(1.15);*/position: static;margin-right: 13px;margin-bottom: 34px;padding: 0;padding-left: 0px;margin-left: 190px;background: rgb(15,6,69);height: 3;border-radius: 1em;">
+            <div class="photo-details" style="width: 730px;transform: scale(1);border-radius: 0px;">
+                <h1 style="height: 0;transform: translateX(12px) translateY(10px);font-size: 15px;"><span><%= i+1 %></span></h1>
+                <div style="margin-left: -8px;margin-top: -3px;">
+                  <div class="pt-3 p-lg-4 " style="transform: translateX(20px) translateY(5px);margin-top: 0px;">
+                    <h4 style="height: 17.5px;margin-top: -10px;font-size: 19.5px;margin-bottom: 7.825px;margin-left: -2px;transform: translateX(-2px) translateY(0px);">Store&nbsp; :&nbsp;</h4>
+                  <p style="margin-top: -16px;font-size: 16px;height: 80px;margin-left: 20px;transform: translateX(-24px) translateY(13px);">Pincode :&nbsp;</p>
+                  <br>
+                  <h5 style="height: 0px;margin-top: -23px;font-size: 19.5px;transform: translateX(60px) translateY(-104px);color: rgb(255, 255, 255);text-align: left;"><%= name[i] %></h5> <h5 style="font-size: 24.5px;font-size: 16px;transform: translateX(62px) translateY(-89px);color: rgb(255, 255, 255);text-align: left;z-index: 2;"><%= pin[i] %></h5>
+                   <div style="margin-left: -3.6px; margin-top: 21px;">
+                    <p align="left" style=" width: fit-content ;transform: translateY(-111px);margin-bottom: -4px;">Working Hours &nbsp; :&nbsp;&nbsp;<%= hours[i] %></p>
+                    <p align="left" style="margin-left: 0;transform: translateY(-111px); margin-bottom: -132px; width: 300x;">Address&nbsp; :<p align="left" style="height: 25px;line-height: 95%;margin-left: 100px;width : 858px;transform: translateX(-30px) translateY(2px);"><%= addr[i] %></p></p>
+                    <div style="margin-top: -109px; scale: 0.37;margin-left: -17px;transform: translateY(220px);">
+                      <div style="font-size: 38.5px;margin-top: -20px; padding-bottom: 20px; margin-left: -553px ;height: 10px;justify-content: left;text-align: left;transform: translateX(0px) translateY(30px)">Phone&nbsp; :&nbsp;<%= phone[i] %></div>
+                     </div>
+                   </div>
+                   </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    </div>
+    <% } %>
+    <a href="javascript:void(0)" data-aos="fade-up"data-aos-duration="1000" onclick="scrollToDiv('carouselExampleCaptions')" class="top">Back to Top &#8593;</a>
+
+    <% } %>
+
+<div style="padding-bottom: 40px;"></div>
+</div>
+    
+  <!-- <a href="/">
+    <input type="submit" class="btn btn-primary" value="Search for another medicine">
+  </a>                    -->
+      </div><!--login-form-wrap-->
+      </div>
+    </div>
+  </div>
+  <!-- body ends -->
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="text/javascript" src="allf.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script> -->
+<script src="rdisp.js"></script>
+    
 </body>

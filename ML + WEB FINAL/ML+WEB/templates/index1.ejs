@@ -5,12 +5,12 @@
 <script src="vrem.js"></script>
 
   <title>2nd page</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
   <link rel="stylesheet" type="text/css" href="/css/style1.css">
   <link rel="stylesheet" type="text/css" href="/css/rating.css">
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>    
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
 
 <video loop autoplay muted>
@@ -27,14 +27,15 @@
         <div style="padding-top: 3em;height: 2px;">    
         </div>
       <div id="login-form-wrap" style="margin-top: 25px;transform: translateX(20px);">          
-        <% if (len === 0||!(len)) { %>
-          <div style="padding-top: 20px;">
-
-          </div>
-          <h1 align="center">Sorry. No Medicines found !</h1>
-          <div  style="padding-bottom: 273px;">
-
-          </div>
+        <% if (len == 0) { %>
+          <section id="about" class="about section-padding" style="padding-top: 240px;margin-left: -20px;"  data-aos="fade-up" data-aos-delay="140" data-aos-duration="1000">
+            <h1 align="center">SORRY, NO MEDICINES FOUND!</h1>
+                  <div class="d-flex justify-content-center">
+                    <a class="btn mx-auto mt-auto" align="center" style="background-color:rgb(16, 8, 87)' ;" href="http://localhost:5000/search">GO BACK TO SEARCH PAGE</a>
+        
+                  </div>
+                  <div style="padding-bottom: 143px;"></div>
+        </section>
         <% } else { %>
   
   <div><h1 align="left" style="margin-left: 280px;"><a href="/" align="left" style="margin-bottom: -66px;color: blue;"><i  class="bi bi-arrow-left"></i></a>&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<span>MEDICINES FOR YOU</span></h1>

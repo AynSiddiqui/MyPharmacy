@@ -16,6 +16,22 @@
 *{
   scroll-behavior:smooth;
 }
+img {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.569);
+  border-radius: 20px;
+}
+.photo-card {
+    transition: transform 0.2s ease-in-out, box-shadow 1s ease-in-out;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.2);
+  }
+  
+  .photo-card:hover {
+    transform: scale(1.2);;
+    transition:cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-duration: 650ms;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
 </style>
 
 <video class="ok" id="bg-video" loop autoplay muted>
@@ -101,7 +117,7 @@
     
   </div>
 </footer> -->
-<footer id="footer" class="footer-1">
+<footer id="footer" data-aos="fade-in" class="footer-1">
   <div class="main-footer widgets-dark typo-light">
   <div class="container">
   <div class="row">
