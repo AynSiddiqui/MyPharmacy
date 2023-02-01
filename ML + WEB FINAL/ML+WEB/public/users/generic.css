@@ -14,17 +14,16 @@ h2{
 }
 .card-body h3{
     /* color: #000040; */
-    color: #000040;
+    color: white;
+    /* background-color: rgba(0,0,7,0.2); */
+    /* background-color: #000040; */
     /* color: red; */
 }
 #card-body h3{
     /* color: #000040; */
     color:white !important;
+    background-color: #000040;
     /* color: red; */
-}
-
-.card-title py-2{
-    box-shadow: 0px 0px 0px rgba(0,0,0,0.2);
 }
 
 .section-padding{
@@ -67,6 +66,8 @@ h2{
     background: rgba(0,0,0,0.4);
     z-index: 1;
 }
+
+
 
 .navbar-nav a{
     font-size: 15px;

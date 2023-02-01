@@ -178,6 +178,13 @@ app.get('/searchstore', async (req, res) => {
   const {name,addr,pin,phone,hours}=req.query
   res.render("../templates/index4",{name,addr,pin,phone,hours})
 })
+
+app.get('/search_error', async (req, res) => {
+  // res.send("search store",req.query)ddd;
+  // const {name,addr,pin,phone,hours}=req.query
+  res.render("../templates/search_error")
+})
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server running on port ${PORT}`));

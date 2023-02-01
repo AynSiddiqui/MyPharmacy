@@ -20,16 +20,21 @@
     <div id="login-form-wrap">      
       <h1>Welcome to MyPharmacy</h1>
       <div class="container">
-      <form action="/searchm" method="post" class="form">
-        <input type="text" class="form-control" placeholder="Search by condition or medicine" style="background-color:whitesmoke" required="required" name="data"><br>
-         <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search Brand">      
-      </form>
-      <br><br><br><br>
-      <form action="/searchgen" method="post" class="formg">  
-        <input type="text" class="form-control" placeholder="Search for generic" style="background-color:whitesmoke" required="required" name="datag"><br>
-          <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search Generic">
-      </form>
-      </div>                 
+        <div class="row">
+          <div class="col-sm">
+            <form action="/searchm" method="post" class="form">
+              <input type="text" class="form-control" placeholder="Search by condition or medicine" style="background-color:whitesmoke" required="required" name="data"><br>
+               <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search Brand">      
+            </form>
+          </div>
+          <div class="col-sm">
+            <form action="/searchgen" method="post" class="formg">  
+              <input type="text" class="form-control" placeholder="Search for generic" style="background-color:whitesmoke" required="required" name="datag"><br>
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search Generic">
+            </form>
+          </div>
+        </div>
+      </div>            
     </div><!--login-form-wrap-->
     </div>
   </div>
