@@ -49,21 +49,25 @@ def searchgen():
     # return render_template("index2.html",len=len(med), med=med, condition=condition, rating=rating, cost=cost, side=side)
     #return k
 
-@app.route('/searchstore')
-def searchstore():
-    return render_template("index3.html")
+# @app.route('/searchstore')
+# def searchstore():
+#     return render_template("index3.html")
 
-@app.route('/displaystore', methods=['GET','POST'])
+@app.route('/displaystore', methods=['POST'])
 def displaystore():
-    inp=request.form.get("inp")
+    responseObject=request.json
+    print(responseObject)
+    inp=responseObject['inp']
+    # inp=request.form.get("inp")
     name=storename(inp)
     addr=storeaddress(inp)
     pin=storepin(inp)
     phone=storephone(inp)
     hours=storehours(inp)
+    return json.dumps({"len":len(name), "name":name, "addr":addr, "pin":pin, "phone":phone, "hours":hours})
     return render_template("index4.html",len=len(name), name=name, addr=addr, pin=pin, phone=phone, hours=hours)
 
 
 if __name__=="__main__":
     # app.run(debug=True)
-    app.run("0.0.0.0", "5001",debug=True)
+    app.run("127.0.0.2", "5001",debug=True)

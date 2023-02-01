@@ -7,8 +7,9 @@ const session = require('express-session');
 const path = require('path');
 const axios = require('axios')
 const app = express();
-const url=require('url');
-var myScripts = require('./static/rdisp.js');
+const url = require('url');
+// var myScripts = require('./static/rdisp.js');
+const { castObject } = require('./models/User.js');
 // Passport Config
 require('./config/passport')(passport);
 
@@ -88,19 +89,19 @@ app.use('/', require('./routes/users.js'));
 app.get('/search', (req, res) => res.render("../templates/index"))
 app.post('/searchm', async (req, res) => {
   try {
-    const response = await fetch('http://127.0.0.1:5001/search', {//change dns to your local dns on app.py terminal
+    const response = await fetch('http://127.0.0.2:5001/search', {//change dns to your local dns on app.py terminal
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(req.body)
     });
-    // const response = await axios.post('http://localhost:5001/search', { data:req.body });
+    // const response = await axios.post('http://127.0.0.1:5001/search', { data:req.body });
     const json = await response.json();
-    console.log(typeof(json))
+    // console.log(typeof (json))
     res.redirect(url.format({
       pathname: "/searchm",
-      query:json
+      query: json
     }));
   } catch (error) {
     console.error(error);
@@ -108,33 +109,15 @@ app.post('/searchm', async (req, res) => {
 });
 app.get('/searchm', async (req, res) => {
   const { len, med, id, condition, rating } = req.query;
-  res.render('../templates/index1',{
-    len,med, id, condition, rating ,request:req})
+  console.log(rating)
+  res.render('../templates/index1', {
+    len, med, id, condition, rating, request: req
+  })
 });
-// app.post('/searchgen', async (req, res) => {
-//   try {
-//     const response = await fetch('http://192.168.29.220:5001/searchgen', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(req.body)
-//     });
-//     console.log("",response.json())
-//     // const response = await axios.post('http://localhost:5001/search', { data:req.body });
-//     // const json = await response.json()[1];
 
-//     res.redirect(url.format({
-//       pathname: "/searchgen",
-//       query:json
-//     }));
-//   } catch (error) {
-//     console.error("hi",error);
-//   }
-// });
 app.post('/searchgen', async (req, res) => {
   try {
-    const response = await fetch('http://192.168.29.220:5001/searchgen', {
+    const response = await fetch('http://127.0.0.2:5001/searchgen', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -142,13 +125,14 @@ app.post('/searchgen', async (req, res) => {
       body: JSON.stringify(req.body)
     });
     // const response = await axios.post('http://localhost:5001/search', { data:req.body });
-    var json =await response.text();
+    // var json =await response.text();
+    const json = await response.json();
     // json=JSON.stringify(json);
-    console.log(json)
+    console.log(json);
     // console.log(json)
     res.redirect(url.format({
-      pathname: "/searchm",
-      query:json
+      pathname: "/searchgen",
+      query: json
     }));
   } catch (error) {
     console.error(error);
@@ -156,11 +140,44 @@ app.post('/searchgen', async (req, res) => {
 });
 app.get('/searchgen', async (req, res) => {
   console.log(req.query)
-  const { len, med, id, condition, rating,side } = req.query;
-  res.render('../templates/index2',{
-    len,med, id, condition, rating ,side,request:req})
+  const { len, med, id, condition, rating, side } = req.query;
+  res.render('../templates/index2', {
+    len, med, id, condition, rating, side, request: req
+  })
 });
 
+
+app.get('/searchs', (req, res) => res.render("../templates/index3"))
+
+app.post('/searchstore', async (req, res) => {
+  try {
+    const response = await fetch('http://127.0.0.2:5001/displaystore', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(req.body)
+    });
+    const json = await response.json();
+    if (json["len"] > 50) {
+      res.send("TOO MUCH")
+    }
+    else {
+      res.redirect(url.format({
+        pathname: "/searchstore",
+        query: json
+      }));
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.get('/searchstore', async (req, res) => {
+  // res.send("search store",req.query)ddd;
+  const {name,addr,pin,phone,hours}=req.query
+  res.render("../templates/index4",{name,addr,pin,phone,hours})
+})
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server running on port ${PORT}`));

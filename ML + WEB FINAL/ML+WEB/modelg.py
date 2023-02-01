@@ -22,9 +22,13 @@ drug_name=pd.read_csv ("generic_csv.csv")
 #print(drug_name.tail())
 #print(drug_name.head())
 
-selected_features=['Condition','Med_name']
+selected_features=['Condition','Med_name','Cost']
 for feature in selected_features:
     drug_name[feature]=drug_name[feature].fillna('')
+
+selected_features1=['Rating']
+for feature in selected_features1:
+    drug_name[feature]=drug_name[feature].fillna(0)
 
 drug_name['Rating'] = drug_name['Rating'].astype('float')
 #print(drug_name.dtypes)
