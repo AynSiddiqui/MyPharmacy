@@ -66,9 +66,14 @@
         <div style="padding-top: 3em;height: 2px;">    
         </div>
       <div id="login-form-wrap" style="margin-top: 25px;transform: translateX(20px);">          
-        <% if (len === 0) { %>
+        <% if (len === 0||!(len)) { %>
+          <div style="padding-top: 20px;">
 
-          <h1>Sorry. No Medicines found !</h1>
+          </div>
+          <h1 align="center">Sorry. No Medicines found !</h1>
+          <div  style="padding-bottom: 273px;">
+
+          </div>
         <% } else { %>
   
   <div><h1 align="left" style="margin-left: 280px;"><a href="/" align="left" style="margin-bottom: -66px;color: blue;"><i  class="bi bi-arrow-left"></i></a>&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<span>MEDICINES FOR YOU</span></h1>
@@ -97,9 +102,9 @@
     </div>
 
     <% } %>
+    <a href="javascript:void(0)" data-aos="fade-up"data-aos-duration="1000" onclick="scrollToDiv('carouselExampleCaptions')" class="top">Back to Top &#8593;</a>
 
     <% } %>
-    <a href="javascript:void(0)" data-aos="fade-up"data-aos-duration="1000" onclick="scrollToDiv('carouselExampleCaptions')" class="top">Back to Top &#8593;</a>
 
 <div style="padding-bottom: 40px;"></div>
    </div>
@@ -139,21 +144,21 @@ function scrollToDiv(id) {
   //   }, 1000);
   // }
 
-$(document).ready(function(){
-        $(".rating").each(function(){
-            var ratingContent = $(this).html();
-            var ratingScore = parseInt(ratingContent*20, 10);
-            var scoreClass =
-                ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
-            $(this).addClass(scoreClass);
-            var ratingColor = $(this).css("background-color");
-            var gradient = `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
-            $(this).attr("style", gradient);
-            $(this).html(`<span>${ratingScore}% ${
-                ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
-            }</span>`);
-        });
-    });
+// $(document).ready(function(){
+//         $(".rating").each(function(){
+//             var ratingContent = $(this).html();
+//             var ratingScore = parseInt(ratingContent*20, 10);
+//             var scoreClass =
+//                 ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
+//             $(this).addClass(scoreClass);
+//             var ratingColor = $(this).css("background-color");
+//             var gradient = `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
+//             $(this).attr("style", gradient);
+//             $(this).html(`<span>${ratingScore}% ${
+//                 ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
+//             }</span>`);
+//         });
+//     });
 </script>
 <script>
   function redirectAndScroll(divId) {

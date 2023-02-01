@@ -88,7 +88,7 @@ app.use('/', require('./routes/users.js'));
 app.get('/search', (req, res) => res.render("../templates/index"))
 app.post('/searchm', async (req, res) => {
   try {
-    const response = await fetch('http://192.168.29.220:5001/search', {
+    const response = await fetch('http://127.0.0.1:5001/search', {//change dns to your local dns on app.py terminal
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
