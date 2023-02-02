@@ -1,10 +1,4 @@
-.bg-nav{
-    /* background: #1D976C;   */
-    /* background-image: url("car3.jpg"); */
-    /* background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  
-    background: linear-gradient(to right, #93F9B9, #1D976C);  */
 
-}
 
 
 *{
@@ -380,3 +374,4 @@ z-index: 1;
         font-style: 12px;
     }
 }
+

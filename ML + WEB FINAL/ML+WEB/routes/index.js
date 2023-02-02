@@ -21,6 +21,7 @@ router.get('/',(req, res) => res.render('home'));
 
 
 router.get('/generic',(req, res) => res.render('generic'));
+router.get('/faqs',(req, res) => res.render('faqs'));
 
 // Dashboard
 
