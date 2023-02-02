@@ -5,11 +5,12 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
-const axios = require('axios')
 const app = express();
 const url = require('url');
 const { castObject } = require('./models/User.js');
 require('./config/passport')(passport);
+
+
 mongoose.set("strictQuery", true);
 mongoose.connect('mongodb://127.0.0.1:27017/testsignup', {
   useNewUrlParser: true,
@@ -24,7 +25,6 @@ db.once("open", () => {
 
 
 // EJS
-
 app.use(expressLayouts); //order imp
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
@@ -82,7 +82,6 @@ app.post('/searchm', async (req, res) => {
 });
 app.get('/searchm', async (req, res) => {
   const { cost, len, med, id, condition, rating } = req.query;
-  console.log(rating)
   res.render('../templates/index1', {
     cost, len, med, id, condition, rating, request: req
   })
@@ -98,7 +97,6 @@ app.post('/searchgen', async (req, res) => {
       body: JSON.stringify(req.body)
     });
     const json = await response.json();
-    console.log(json);
     res.redirect(url.format({
       pathname: "/searchgen",
       query: json
@@ -108,7 +106,6 @@ app.post('/searchgen', async (req, res) => {
   }
 });
 app.get('/searchgen', async (req, res) => {
-  // console.log(req.query)
   const { cost, len, med, id, condition, rating, side } = req.query;
   res.render('../templates/index2', {
     cost, len, med, id, condition, rating, side, request: req
