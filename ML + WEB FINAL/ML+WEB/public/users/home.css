@@ -10,6 +10,12 @@ body{
 
 h2{
     color: #000040;
+    /* text-size-adjust: 10px; */
+    /* color: red; */
+}
+h3{
+    color: #000040;
+    /* text-size-adjust: 10px; */
     /* color: red; */
 }
 .card-body h3{
@@ -25,7 +31,7 @@ h2{
 
 .about-text {
     /* font-weight: lighter; */
-    text-align: justify;
+    /* text-align: justify; */
     /* font-style: normal; */
 }
 
