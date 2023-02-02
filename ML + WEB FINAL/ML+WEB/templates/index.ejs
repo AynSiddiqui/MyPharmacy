@@ -1,0 +1,46 @@
+<title>Search Medicines</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script src="vrem.js"></script>
+
+<video loop autoplay muted>
+  <source src="video1.mp4" type="video/mp4">
+</video>
+
+<script>
+    document.querySelector('video').playbackRate=0.7;
+</script>
+
+<body class="bg-nav">
+  <!-- <h1 align="center">WELCOME TO MY<span class="text-primary">PHARMACY</span></h1> -->
+<div id="carouselExampleCaptions" class="carousel-slide" ba style="z-index: 0;">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div style="padding-top: 8em; height: 2px;">    
+      </div>
+    <div id="login-form-wrap">      
+      <!-- <h1>WELCOME TO MYPHARMACY</h1> -->
+      <h1 align="center">WELCOME TO MY<span class="text-primary">PHARMACY</span></h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <form action="/searchm" method="post" class="form">
+              <input type="text" class="form-control"  placeholder="Search by condition or medicine" style="background-color:whitesmoke;text-align: center;font-size: 20px;" required="required" name="data"><br>
+               <input type="submit" class="btn btn-primary btn-block btn-lg d-flex justify-content-center align-items-center" value="Search Brand">      
+            </form>
+          </div>
+          <div class="col-sm">
+            <form action="/searchgen" method="post" class="formg">  
+              <input type="text" class="form-control" placeholder="Search for generic" style="background-color:whitesmoke;text-align: center;font-size: 20px;" required="required" name="datag"><br>
+                <input type="submit" class="btn btn-primary  d-flex justify-content-center align-items-center" value="Search Generic">
+            </form>
+          </div>
+        </div>
+      </div>            
+    </div><!--login-form-wrap-->
+    </div>
+  </div>
+</div>
+  </body>
+
+
+

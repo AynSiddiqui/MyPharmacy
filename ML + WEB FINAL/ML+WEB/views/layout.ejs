@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<video class="ok" id="bg-video" loop autoplay muted>
+  <source class="ok" src="./img/video.mp4" type="video/mp4">
+</video>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+      <link rel="stylesheet" type="text/css" href="/css/rating.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="footer.css"> -->
+  <link rel="stylesheet" href="./users/footer.css">
+  <link rel="stylesheet" href="./users/navbar.css">
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container d-flex">
+    <a class="navbar-brand" href="/">My<span class="text-primary">Pharmacy</span></a>
+<div class="search-container justify-content-center align-items-center align-self-center w-50">
+  </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/search">Medicines</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/searchs">Stores</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">Contact</a>
+        </li> 
+        <% if (!currentUser){ %>          
+          <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+          <li class="nav-item">
+                  <a class="nav-link" href="/register">Register</a>
+                </li>
+                
+          <% } else { %> 
+          <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+          <% }  %> 
+
+    </div>
+  </div>
+</nav>
+
+<%- body %>
+</footer> -->
+<footer id="footer" data-aos="fade-in" class="footer-1">
+  <div class="main-footer widgets-dark typo-light">
+  <div class="container">
+  <div class="row">
+    
+  <div class="col-xs-12 col-sm-6 col-md-3">
+  <div class="widget subscribe no-box">
+  <h5 class="widget-title">MyPharmacy<span></span></h5>
+  <p>MyPharmacy aims to give you accurate, current information that will help you make the appropriate decisions for your health.</p>
+  </div>
+  </div>
+  
+  <div class="col-xs-12 col-sm-6 col-md-3">
+  <div class="widget no-box">
+  <h5 class="widget-title">Quick Links<span></span></h5>
+  <ul class="thumbnail-widget">
+  <li>  
+  <div class="thumb-content"><a href="/generic">All about Generics</a></div> 
+  </li>
+  <li>
+  <div class="thumb-content"><a href="/faqs">FAQs</a></div> 
+  </li>
+  </ul>
+  </div>
+  </div>
+  
+  <div class="col-xs-12 col-sm-6 col-md-3">
+  <div class="widget no-box">
+  <% if (!currentUser) { %>
+  <h5 class="widget-title">Get Started<span></span></h5>
+  <p>Be a part of our medicinal hub now!</p>
+  <div style="transform: scale(0.5); margin-top: -20px;margin-left: -50%;">
+    <div class="wrap">
+        <a align="center" href="/register" class="button1" style="text-decoration: none;">Register Now!</a>
+      </div>   
+  </div>
+  <% } else { %>
+    <h5 class="widget-title">Hey&nbsp;<%= currentUser.name %>! <span></span></h5>
+    <p>
+      We are grateful to have you as our member!
+    </p>
+    <% } %>
+</div>
+  </div>
+  
+  <div class="col-xs-12 col-sm-6 col-md-3">
+  
+  <div class="widget no-box">
+  <h5 class="widget-title">Contact Us<span></span></h5>
+  
+  <p><a href="mailto:info@medicinalwebsite.com" title="glorythemes">info@medicinalwebsite.com</a>
+    <p>Contact&nbsp;:&nbsp; 555-555-5555</p>
+  </p>
+  </div>
+  </div>
+  
+  </div>
+  </div>
+  </div>
+    
+  <div class="footer-copyright">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-12 text-center">
+  <p>Copyright MyPharmacy © 2023. All rights reserved.</p>
+  </div>
+  </div>
+  </div>
+  </div>
+  </footer>
+<!-- footer ends -->
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+  document.querySelector('video').playbackRate=1.5;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
