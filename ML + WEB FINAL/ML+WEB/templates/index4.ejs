@@ -1,32 +1,89 @@
   <title>Display store</title>
     <script src="vrem.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style4.css">
+  <link rel="stylesheet" type="text/css" href="css/candle.css">
 
 
   <video loop autoplay muted>
     <source src="video1.mp4" type="video/mp4">
   </video>
-  
-<body class="bg-nav">
-
-  <!-- body -->
-  <div id="carouselExampleCaptions" class="carousel-slide" ba style="z-index: 0;">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div style="padding-top: 5em;height: 2px;">    
-        </div>
-      <div id="login-form-wrap" style="transform: translateX(20px);">          
         <% if (len == 0) { %>
-          <section id="about" class="about section-padding" style="padding-top: 240px;margin-left: -20px;"  data-aos="fade-up" data-aos-delay="140" data-aos-duration="1000">
+          <body class="bg-nav bg1">
+            <div id="carouselExampleCaptions" class="carousel-slide" background="./img/team-1.png" ba style="z-index: 0;">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div style="padding-top: 3em;height: 2px;">    
+                  </div>
+                <div id="login-form-wrap" style="margin-top: 25px;transform: translateX(20px);">  
+          <!-- <section id="about" class="about section-padding" style="padding-top: 240px;margin-left: -20px;"  data-aos="fade-up" data-aos-delay="140" data-aos-duration="1000">
             <h1 align="center">SORRY, NO STORES FOUND!</h1>
                   <div class="d-flex justify-content-center">
                     <a class="btn mx-auto mt-auto" align="center" style="background-color:rgb(16, 8, 87)' ;" href="http://localhost:5000/searchs">GO BACK TO SEARCH PAGE</a>
         
                   </div>
                   <div style="padding-bottom: 260px;"></div>
+        </section> -->
+        <div style="margin-bottom: -210px;">
+          <section id="about" class="about section-padding" style="padding-top: 120px;margin-left: -20px;"  data-aos="fade-up" data-aos-delay="140" data-aos-duration="1000">
+            <h1 align="center">SORRY, NO STORES FOUND!</h1>
+                  <div class="d-flex justify-content-center">
+                    <a class="btn mx-auto mt-auto" align="center" style="background-color:rgb(16, 8, 87)' ;" href="http://localhost:5000/searchs">GO BACK TO SEARCH PAGE</a>
+        
+                  </div>
         </section>
+        <div style= "margin-top: 410px;margin-bottom:600px ; transform: translateY(-100px) ">
+          <div class="wrapper">
+            <div class="candles">
+              <div class="light__wave"></div>
+              <div class="candle1">
+                <div class="candle1__body">
+                  <div class="candle1__eyes">
+                    <span class="candle1__eyes-one"></span>
+                    <span class="candle1__eyes-two"></span>
+                  </div>
+                  <div class="candle1__mouth"></div>
+                </div>
+                <div class="candle1__stick"></div>
+              </div>
+              
+              <div class="candle2">
+                <div class="candle2__body">
+                  <div class="candle2__eyes">
+                    <div class="candle2__eyes-one"></div>
+                    <div class="candle2__eyes-two"></div>
+                  </div>
+                </div>
+                <div class="candle2__stick"></div>
+              </div>
+              <div class="candle2__fire" style="transform: translateX(-14px) translateY(-10px);"></div>
+              <div class="sparkles-one"></div>
+              <div class="sparkles-two"></div>
+              <div class="candle__smoke-one">
+          
+              </div>
+              <div class="candle__smoke-two">
+          
+              </div>
+              
+            </div>
+            <div class="floor">
+            </div>
+            
+          
+          </div>
+        </div>
+        </div>
         <% } else { %>
-  
+          <body class="bg-nav">
+
+            <!-- body -->
+            <div id="carouselExampleCaptions" class="carousel-slide" background="./img/team-1.png" ba style="z-index: 0;">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div style="padding-top: 3em;height: 2px;">    
+                  </div>      <div id="login-form-wrap" style="margin-top: 30px; width: calc(100%);transform: translateX(20px);">          
+
+   
   <div><h1 align="left" style="margin-left: 250px;"><a href="http://localhost:5000/searchs" align="left" style="margin-bottom: -66px;color: blue;"><i  class="bi bi-arrow-left"></i></a>&emsp;&emsp;&emsp;&ensp;<span> MEDICAL SHOPS FOR YOU</span></h1>
     
     <% for (var i = 0; i < len; i++) { %>
