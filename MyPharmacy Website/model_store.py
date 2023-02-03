@@ -19,8 +19,8 @@ import pickle
 #from sklearn.model_selection import train_test_split
 
 store=pd.read_csv ("medical_store.csv")
-#print(drug_name.tail())
-#print(drug_name.head())
+##print(drug_name.tail())
+##print(drug_name.head())
 
 selected_features=['Pincode','Address']
 for feature in selected_features:
@@ -38,7 +38,7 @@ store_name=store['Name'].tolist()
 store_phone=store['Phone'].tolist()
 #List with hours
 store_hour=store['Business_hours'].tolist()
-print(store.dtypes)
+#print(store.dtypes)
 
 
 def storename(srch):
@@ -118,11 +118,11 @@ def storehours(srch):
     return hours
 
 srch="400101"
-print(storename(srch))
-print(storeaddress(srch))
-print(storepin(srch))
-print(storephone(srch))
-print(storehours(srch))
+#print(storename(srch))
+#print(storeaddress(srch))
+#print(storepin(srch))
+#print(storephone(srch))
+#print(storehours(srch))
 
 # Select independent and dependent variable
 #X = drug_name[["Med_name", "Condition"]]

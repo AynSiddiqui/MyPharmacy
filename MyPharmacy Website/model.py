@@ -19,8 +19,8 @@ import pickle
 #from sklearn.model_selection import train_test_split
 
 drug_name=pd.read_excel ("output.xlsx")
-#print(drug_name.tail())
-#print(drug_name.head())
+##print(drug_name.tail())
+##print(drug_name.head())
 
 selected_features=['Condition','Drug']
 for feature in selected_features:
@@ -84,20 +84,20 @@ def searching(srch):
                     med_med.append(med[j])
         arrange=merge(rating_med,med_med)
         sorted_med=sorted(arrange,key=lambda x:x[0], reverse=True)
-        #print("Medicines suggested for you: ")
+        ##print("Medicines suggested for you: ")
         i=1
         list_med=[]
         for med in sorted_med:
             if i<21:
-                #print(i,". ",med[1])
+                ##print(i,". ",med[1])
                 list_med.append(med[1])
                 i+=1
         return list_med
     else:
-        #print("Medicines suggested for you: ")
+        ##print("Medicines suggested for you: ")
         for i in range(0,len(match)): 
             pass
-            #print((i+1),". ",match[i])
+            ##print((i+1),". ",match[i])
         return match
 
 def drugid(k):
@@ -124,10 +124,10 @@ def drugcondition(k):
 
 
 k=searching11("high")
-print(k)
-print(drugid(k))
-print(drugcondition(k))
-print(drugrating(k))
+#print(k)
+#print(drugid(k))
+#print(drugcondition(k))
+#print(drugrating(k))
 
 
 # Select independent and dependent variable

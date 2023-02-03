@@ -19,8 +19,8 @@ import pickle
 #from sklearn.model_selection import train_test_split
 
 drug_name=pd.read_csv ("generic_csv.csv")
-#print(drug_name.tail())
-#print(drug_name.head())
+##print(drug_name.tail())
+##print(drug_name.head())
 
 selected_features=['Condition','Med_name','Cost']
 for feature in selected_features:
@@ -31,13 +31,13 @@ for feature in selected_features1:
     drug_name[feature]=drug_name[feature].fillna(0)
 
 drug_name['Rating'] = drug_name['Rating'].astype('float')
-#print(drug_name.dtypes)
+##print(drug_name.dtypes)
 drug_name['Side_effects']=drug_name['Side_effects'].replace(r'([a-z])([A-Z])', r'\1,\2', regex=True)
 #drug_name['Side_effects'] = drug_name['Side_effects'].astype('str')
 drug_name['Side_effects']=drug_name['Side_effects'].str.replace(")","), ", regex=True)
 drug_name['Side_effects'] = drug_name['Side_effects'].str.rstrip(', ')
 
-#print(drug_name['Side_effects'])
+##print(drug_name['Side_effects'])
 
 #List with medicine names
 med_name=drug_name['Med_name'].tolist()
@@ -109,11 +109,11 @@ def drugcostg(k):
     return cost
 
 k=searching11g("diabetes")
-print(k)
-print(drugconditiong(k))
-print(drugratingg(k))
-print(sideeffectsg(k))
-print(drugcostg(k))
+#print(k)
+#print(drugconditiong(k))
+#print(drugratingg(k))
+#print(sideeffectsg(k))
+#print(drugcostg(k))
 
 # Select independent and dependent variable
 X = drug_name[["Med_name", "Condition"]]

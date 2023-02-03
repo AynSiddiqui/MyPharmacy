@@ -8,6 +8,10 @@
     font-weight: 500;
 }
 
+.alert{
+  text-align: center;
+}
+
 .navbar-light .navbar-brand{
     color: #000;
     font-size: 25px;
