@@ -16,7 +16,7 @@ def search():
     responseObject=request.json
     print(responseObject)
     data=responseObject['data']
-    print(data)
+    #print(data)
     med=searching11(data)
     id=drugid(med)
     condition=drugcondition(med)
@@ -30,13 +30,13 @@ def searchgen():
     responseObject=request.json
     print(responseObject)
     datag=responseObject['datag']
-    print(datag)
+    #print(datag)
     med=searching11g(datag)
     condition=drugconditiong(med)
     rating=drugratingg(med)
     cost=drugcostg(med)
     side=sideeffectsg(med)
-    print(med,condition,rating,cost,side)
+    #print(med,condition,rating,cost,side)
     
     def default(o):
         if callable(o):

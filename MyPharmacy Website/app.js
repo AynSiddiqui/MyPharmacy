@@ -59,89 +59,10 @@ app.use(function (req, res, next) {
 
 app.use('/', require('./routes/index.js'));
 app.use('/', require('./routes/users.js'));
+app.use('/', require('./routes/search.js'));
 
 // Search Routes
-app.get('/search', (req, res) => res.render("../templates/index"))
-app.post('/searchm', async (req, res) => {
-  try {
-    const response = await fetch('http://127.0.0.2:5001/search', {//change dns to your local dns on app.py terminal if required
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(req.body)
-    });
-    const json = await response.json();
-    res.redirect(url.format({
-      pathname: "/searchm",
-      query: json
-    }));
-  } catch (error) {
-    console.error(error);
-  }
-});
-app.get('/searchm', async (req, res) => {
-  const { cost, len, med, id, condition, rating } = req.query;
-  res.render('../templates/index1', {
-    cost, len, med, id, condition, rating, request: req
-  })
-});
 
-app.post('/searchgen', async (req, res) => {
-  try {
-    const response = await fetch('http://127.0.0.2:5001/searchgen', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(req.body)
-    });
-    const json = await response.json();
-    res.redirect(url.format({
-      pathname: "/searchgen",
-      query: json
-    }));
-  } catch (error) {
-    console.error(error);
-  }
-});
-app.get('/searchgen', async (req, res) => {
-  const { cost, len, med, id, condition, rating, side } = req.query;
-  res.render('../templates/index2', {
-    cost, len, med, id, condition, rating, side, request: req
-  })
-});
-
-
-app.get('/searchs', (req, res) => res.render("../templates/index3"))
-
-app.post('/searchstore', async (req, res) => {
-  try {
-    const response = await fetch('http://127.0.0.2:5001/displaystore', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(req.body)
-    });
-    const json = await response.json();
-    if (json["len"] > 50) {
-      res.render("../templates/search_error")    }
-    else {
-      res.redirect(url.format({
-        pathname: "/searchstore",
-        query: json
-      }));
-    }
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-app.get('/searchstore', async (req, res) => {
-  const {len,name,addr,pin,phone,hours}=req.query
-  res.render("../templates/index4",{len,name,addr,pin,phone,hours})
-})
 
 
 const PORT = process.env.PORT || 5000;

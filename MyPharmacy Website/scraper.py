@@ -18,7 +18,7 @@ writer.writerow(header)
 for list in lists:
     names = list.find('tr', class_=['flaticon-medical-11','flaticon-medical-9','flaticon-medical-16']).text
     info = [names]
-    print(info)
+    # print(info)
 
 
 
