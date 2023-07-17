@@ -9,32 +9,13 @@ const User = require('../models/User');
 const { db } = require('../models/User');
 const { forwardAuthenticated, notin } = require('../config/auth');
 
-// // Home Page
-
-// // router.get('/register', (req, res) => res.render('register'));
-// router.get('/home', forwardAuthenticated, (req, res) => res.render('home'));
-
 // Login Page
-
-// router.get('/login',  (req, res) => res.render('login'));
 router.get('/login', notin, (req, res) => res.render('login'));
 
 // Register Page
-
-// router.get('/register', (req, res) => res.render('register'));
 router.get('/register', notin, (req, res) => res.render('register'));
 
-
-
-
-
 // Register
-
-// router.post('/register', (req, res) => {
-//   console.log(req.body)
-//   res.send('hello');
-// });
-
 router.post('/register', (req, res) => {
   const { name, email, password, password2 } = req.body;
   let errors = [];
@@ -75,12 +56,6 @@ router.post('/register', (req, res) => {
           email,
           password
         });
-
-        // console.log(newUser)
-        // db.collection('users').insertOne(newUser)
-        // console.log(User)
-        // res.send('hello');
-
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
@@ -98,9 +73,6 @@ router.post('/register', (req, res) => {
               .catch(err => console.log(err));
           });
         });
-
-        // console.log(newUser)
-
       }
     });
   }
@@ -111,7 +83,6 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
-    // successRedirect: '/dashboard',//trying home
     failureRedirect: '/login',
     failureFlash: true
   })(req, res, next);
@@ -120,12 +91,10 @@ router.post('/login', (req, res, next) => {
 // Logout
 
 router.get('/logout', (req, res) => {
-    //   req.logout();
     req.logout(function(err) {
     if (err) { return next(err); }
     req.flash('success_msg', 'You are logged out');
     res.redirect('/');
-    // res.redirect('/login'); //trying home
   });
 });
 

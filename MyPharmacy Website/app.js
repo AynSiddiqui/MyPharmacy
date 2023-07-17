@@ -10,7 +10,6 @@ const url = require('url');
 const { castObject } = require('./models/User.js');
 require('./config/passport')(passport);
 
-
 mongoose.set("strictQuery", true);
 mongoose.connect('mongodb://127.0.0.1:27017/testsignup', {
   useNewUrlParser: true,
@@ -41,12 +40,8 @@ app.use(
     saveUninitialized: true
   })
 );
-
-// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Connect flash middleware
 app.use(flash());
 
 app.use(function (req, res, next) {
@@ -60,10 +55,6 @@ app.use(function (req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/', require('./routes/users.js'));
 app.use('/', require('./routes/search.js'));
-
-// Search Routes
-
-
 
 const PORT = process.env.PORT || 5000;
 
